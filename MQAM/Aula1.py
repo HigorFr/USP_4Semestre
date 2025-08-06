@@ -13,7 +13,7 @@
 #Haverá contas na matéria, mas usarei o notebook como anotação principal
 
 
-print("")
+
 
 #Regressão linear simples:
     #Conceito básico da primeira aula
@@ -30,4 +30,4 @@ print("")
         #Q = Σ(Ei)^2 = Σ(Yi - Ŷi)^2
         #O Ŷ é o que foi estimado, pelo que entendi pode ser uma média ou uma outra aproximação feita
 
-
+    #Normalmente se encontra derivando a parabola trimensional 
