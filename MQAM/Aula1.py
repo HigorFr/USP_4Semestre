@@ -13,7 +13,7 @@
 #Haverá contas na matéria, mas usarei o notebook como anotação principal
 
 
-
+print("")
 
 #Regressão linear simples:
     #Conceito básico da primeira aula

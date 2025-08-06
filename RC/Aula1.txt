@@ -1,0 +1,32 @@
+Professor João Bernado
+JB
+
+JBERNADES@USP.Br
+
+
+Será mais do que do ponto de vista software de rede, terá hardware
+Algoritimos da Rede
+FLuxo de rede, pacotes
+Protocolos
+
+Professor recomenda não estudar pelo slide,
+bib: KUROSE, redes de computadores, abordagem TOPDOWN
+
+
+TOPDOWN - começar do nível alto e ir descendo (Tem camadas)
+
+Avaliação não é por prova grande, será por volta de 7 "provinhas"
+    Vai acumular conteudo e ai vai ter provinho quando der
+    Normalmente na terça feira
+    Dura no max 8min, corrigido na hora
+    Troca com alunno e nós mesmos corrigimos
+    Não tem SUB, considera N-1 provinhas (exclui a pior)
+    TEM EP 2 a 3 Pessoas pode ser de qualquer sala 
+        1 Será com programação distribuida (Com relatório)
+        2 
+    Nota (Provinhas) é 40% e dois EPs com 30% camadas
+        EP será dado 5 semanas aṕos ser anunciado (Normalmente depois de chegar em parte especifica da matéria)
+
+Pode usar GPT para aprender
+    
+
