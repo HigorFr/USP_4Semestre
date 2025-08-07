@@ -45,6 +45,6 @@
         #OU (SSO/SSTO) já que eles são complementos, que explicam a distancia entre a média e os valores observados.
         #QUanto melhor o modelo, mais próximo de 1 o R² estará, ou seja, mais do modelo é explicado pela variável preditora X.
 
-        #Na correção linear simples, existe uma correção do coeficiente r e o R², que literalmente é o quadrado do coeficiente de correlação, ou seja, R² = 
+        #Na correção linear simples, existe uma correção do coeficiente r e o R², que literalmente é o quadrado do coeficiente de correlação, ou seja, R² = R²
             #r é o coeficiente de correlação entre X e Y, (O angulo da reta de regressão com o eixo X)
 
