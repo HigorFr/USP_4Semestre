@@ -1,0 +1,72 @@
+Aula 2
+
+Atividades opcionais será colocadas no Moodle
+
+
+Entender funcionamento de rede
+    Internet será o maior exemplo, mas nem toda rede é Internet
+
+
+Camda de redes
+    Estamos na borda, sistema final, onde a internet "bate e volta" sem rotear para mais aparalhos ou sem passar por ele para chegar em mais alguem
+        (Se o celular ativar o modo roteador ele deixa de ser)
+
+    Enlace - Conecta varios pontos
+
+
+Visão básica da internet
+    -Sistemas finais (Hospedeiro ou Host)
+        -Host normalmente se pensa em serivdores, mas na literatura o Host é sinonimo de sistema final, independnete de ser cliente ou serivdores
+    -Rede é o caminho para distribuir o processamento
+
+    -Rede funciona através de "enlaces" (Link layers) que é a ligação entre computadores na internet
+        -Pode ser guiada (Com meio físico,cabo) ou não guiada (Sem meio físico, apenas ondas)
+        
+        -A transmissão (taxa) de dados é através da amplitude da onda (Pouca amplitude é 0, muito é 1)
+            -Normalmente mandar uma onda é muito lento, você manda várias paralelas em frequencias diferentes
+            -Utiliza Transformações de fourrier (Separar frequencias de onda) (Algoritimo FFT, implementada por hardware)
+            -A largura de banda é quantas frequencias aquele dispositivo ocupa (Por mais que a frequencia seja continua, noramlmente a fisica irá possuir ranges delimitados)
+                -Isso não é taxa somente, tem outros aspectos como compactação
+
+
+    -Roteadores farezm o direcionamento do pacotes, é como se funcionasse como computades super especializados
+        -Ele olha os endereços e vai repassando (para o host ou para outro roteador)
+        -Meio que o "cruazamento" e quem direciona os pacotes
+        -faz o "roteamento" e o "repasse"
+        -basicamente eles que criam o miolo da internet (que não é a borda como os pcs)
+    
+    -Não só computadores ficam conectados na internet, existem muitos dispositivos que consegue conectar nele, cameras por exemplo
+        -Inclusive algumas são muito obsoletas e fáceis serem hackeadas
+
+    -Internet também não é uma rede só, ela é uma junção de várias redes. A rede doméstica de casa já é considerada uma rede.
+        -Ela é consequentemente fácilmente expandível
+        -Exatamente por isso ela é muito difícil de ser padronizada (IPV6 por exemplo, que não tem multicast)
+        -Regida por "Protocolos", regras de comunicação, como uma linguá especialziada
+        -Normalmente essas regras são definidas por um concsórcio formado por empresas, chamado IETF (Antigmaente era meio open-source atravpes de RFC)
+            -Agora é a IEEE (Que inclusive lança os padrões de WIFI)
+        -Ela meio que surgiu de um instituto de pesquisa militar, com objetivo de decentralizar caminhos de comunicação
+    
+    -Trabalho de criar uma rede distribuido vai exigir criar um protocolo
+        -Existem camadas entre protocolos, e cada protocolo pode utilizar os protocolos de baixo
+
+
+-borda
+    -Hosts, com aplicações distribuídas
+    
+    
+    - Modelo cliente servidor -> Hospedeiro cliente solicita de servidor (Servidor por definição está sempre ativo)
+        -(Ex de cliente é o navegador, e o servidor pode ser uma página)
+        -Sempre o cliente que conecta inicialmente no servidor, nunca o contrário
+        -Servidor centraliza muito (Ou seja, tem muitos cliente pra um server), em um jogo por exemplo ele recebe todos os inputs e de pois vai devolvendo para os outros (Isso cria segurança, mas tem delay)
+            -Segurança pois mudar bits no seu pc é trivial
+        -Escalabilidade de servidor é mais complicada, tem fatores de calor, energia, banda (data-centers precisam de tudo isso)
+
+
+    -Modleo p2p -> Não há servidor, todas as máquinas fazem um pouco de processamento (Hora cliente, hora servidor)
+        -Vantagens dele são quase o inverso do servidor, é tudo distribuido, fácil de escalar
+        -Quanto mais gente usando melhor
+        
+    -Tem modelos híbridos, que misturam ambos
+        -Prox aula tem mais
+
+    
