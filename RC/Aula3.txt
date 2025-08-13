@@ -1,0 +1,48 @@
+Aula 3
+
+
+Relembrando peer-to-peer
+Agir como Cliente e Agindo como Host dependo do tempo
+Skype* e Bittorrent usam por exemplo
+    Skype na verdade era um sistema híbrido, ela tinha peer-to-peer para comunicação, e apenas usava cliente servidor para status
+
+Tem uma vantagem de ter o modelo cliente servidor atualemnte, mais concentrado, com mais latência contudo
+A maioria dos que usam peer-to-peer é híbrida, mas quando se fala que a apalicação é peer-to-peer é puro mesmo   .
+
+
+
+Meios de acessos
+    Antenas conectam em modens por exemplo, pode haver empresas de antena, provedor
+    Roteador de borda é os que atravessam a rede de  uma para outra (Pode ser interno)
+    Normalmente chega pelo moden e ele distribui para vários dispositivos
+    Tudo se conecta por enlaces
+    Moden e roteador são diferentes
+
+
+    Um ip para cada casa, normalmente o roteador criar então ip fakes para cada dispositivo (NAT 198.162.0.1, algo assim, não lembro)
+        O ip verdadeiro é o Gateway, para acessar a internet, que é um numero IP de verdade
+        (Isso se deve pela falta do IPV6, pois falta IP, com IPV6 cada pessoa poderia ter tranquilamente 10k ips de verdade)
+
+
+Atualmente a fibra-ótica é mais comum, ela tem larguda de banda imensa, e é compartilhada nos elaces, mas acaba nem fazendo difença pela banda
+
+Largura de banda pdoe ser compartilhada, ou seja, dividida para várias residências. ou Deidcada, para você.
+
+Traffic Shaping - Crime, é quando a provedora dominui velocidade de certos site por algum motivo 
+
+
+Modem discado antigo - Usava infraestrutura do Telefone, basicamente usando um separar do modem do Telefone 
+    Não dava pra usar internet e telefone simultaneamente
+    Fio curto, então a potência virava calor por conta da resistência
+    Cada casa conectava à um Central telefonica, "Escritorio Central"
+    56Kbps de acesso ou menos
+    DSL???
+
+
+
+No estados unidos a TV a cabo já tinha muita popularidade, então foi ele que foi usado no geral nos EUA, então lá já começou muito forte
+    Casas tinham acesso compartilhado
+    diferente do DSL, tinha acesso direto dedicado
+
+Cabo não tem preferencia de uplaod e download, é a meams coisa. Contudo noramlmente se divide a quantidade de frequência e deixa o upload menor
+Downstrem
