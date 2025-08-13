@@ -45,4 +45,16 @@ No estados unidos a TV a cabo já tinha muita popularidade, então foi ele que f
     diferente do DSL, tinha acesso direto dedicado
 
 Cabo não tem preferencia de uplaod e download, é a meams coisa. Contudo noramlmente se divide a quantidade de frequência e deixa o upload menor
-Downstrem
+Downstrem é download e upstream é upload
+
+Protocolo de controle de acesso ao meio, pois todo mundoa acessando o mesmo cabo poderia dar problemas, e precisamos sincronizar
+    Parecido como OAC nos barramentos, contudo o controle vinha do mesmo canal do meio
+    Tecnicas um pouco complicadas
+
+
+Atualmente se usa fibra
+    Distribuidor separa para varias Casas
+    Depois distribui sem ser com fibra (Os cabinhos de internet famoso)
+    Velocidade da luz, não perde praticamente nada de potência, não esquenta
+
+    
