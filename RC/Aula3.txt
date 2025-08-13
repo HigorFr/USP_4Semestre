@@ -56,5 +56,5 @@ Atualmente se usa fibra
     Distribuidor separa para varias Casas
     Depois distribui sem ser com fibra (Os cabinhos de internet famoso)
     Velocidade da luz, não perde praticamente nada de potência, não esquenta
-
+    Caro comparado ao cobre
     

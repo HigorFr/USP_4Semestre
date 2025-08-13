@@ -44,7 +44,7 @@
 
 #Função objetivo fica 
 
-#Se uso pytorch
+#Se usa pytorch
 
 #Épocas é quantas vezes será atualizado o valor
 
