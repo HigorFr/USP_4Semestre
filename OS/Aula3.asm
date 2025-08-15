@@ -90,6 +90,9 @@ int 0x80 é a instrução análoga ao Syscall do MIPS (Isso em X86)
     #Isso vai depender da priorirade cada driver terá o seu
 
 
+#O clock também gera interrupção para garantir que o SO rode periodicamente
+
+#Isso abre margem para dar muitos erros que serão vistos deposi
 
 
     
