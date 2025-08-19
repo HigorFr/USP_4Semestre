@@ -191,3 +191,124 @@
 
     #Isso pode ser um pouco desviado conhecendo a concentração de pontos no espaço, que me permitirá excluir certos pontos não relevantes para o treinamento
 
+
+
+#Representação de modelagem paramtrica e não parametrica
+    #G como funções geradas pelo modelo e H como espaço de hipoteses
+        #Modelos ruins, sem haver com o dominio, ficam com o g muito distante
+        #Isso é erro de representação 
+
+    #Erro de estmiação, conjunto de pontos pequenos, falta de dados
+
+    #Erro de computação, que é devido a otimização, é impossível achar o ótimo global.
+
+    #Erro ê é formado pela soma dos 3 erros
+
+
+
+#Combinação de modelos para melhorar esses erros de representação
+    #Ensemble -> problma vísvel para todos os modelos
+    #Mistura de Especialisata (DA ic) -> Cada um faz uma parte
+
+    #Métodos construtivo (Funções vão expandido confome época eu acho) -> usado por redes neurais
+    #Será visto mitura, ensenble e aproximação de de modelos
+        #redução de dimensionalidade não será abordado por exemplo
+
+
+
+
+
+
+
+#================= Otmização
+
+#Problema de matemática, tem que ser entendido, antes de ser aplicado
+    #Pode causar erros de computação
+
+
+#Restira -> Coloca parametro com limitante ou desigualdade, alguns modelos trabalham sobre isso
+#Irrestrira -> Rede neural, sem resitrição
+
+
+
+#max/min global e local, já ciente.
+    #Restrito é quando há restrições nos parâmetros
+
+
+
+#Gradiente e Hessiana
+    #Toda função pode ser representada por uma série de taylor
+    #Com um X barra você pode calcular qualquer ponto na região usando uma aproximação
+    #Em curvas, para aproximar você precisaria de derivadas de segunda orden
+        #isso pode se estender e formar a série de taylor
+
+
+#Gradiente então são várias derivadas de orden n de um Xn, foramm um vetor com n valores
+    #Isso me fala a direção de crescimento da reta
+    #Para minimazar é só ir na direção contrária ao gradiente
+    #Basicamente saio derivando para todo N e jogando na formula (Tenho que ver o slide)
+    #Só entra daado do treinamento no gradiente
+
+
+
+#Derivada direcional -> Não anotei
+#Gradiente assume que a função é uma reta, então ao andar muito pode sair da região de interesse e inferir algo errado
+
+
+
+
+#Matriz Hesiana
+    #Ordem de derivadas especifica, referente a posiçao da matriz
+    #Ex, linha 1x1, é derivadad de X1 na expreção 1, 1x2, é a derivada da expressão 2 em relação à X1
+    #Problema quadratico é resolvido em uma iteração, contudo é muito dificil pois ficar X² do numero de parametros
+    
+
+    #Matriz Definida positiva e semidefinida positiva
+        #Definida com a Hesiana, tem certas categorias 
+        
+
+
+    #Pode haver locais ótimos em que está no infinito, dizemos então que ele é factivel mas não é limitada, e o gradiente vai continuar andadando
+    #Pode também não estar fechada no extremo,  tipo (x<2), dizemos que é factivel mas não é fechda
+    #Ela também tem que ser continua, ou isso irá gerar problemas para o gradiente
+
+
+
+
+
+    #Direção descendente 
+        #Quando um valor andando na função é menor de que onde você estava, dizemos que o delta que você andou é uma direção descendente
+    
+    #Ou seja, qualquer uma que se mutiplicar pelo gradiente e dê negativo
+    #Se for minimo local, o gradiente é 0
+    #Nem sempre gradiente zero é minimo local, pode ser apeans um ponto de inflexão
+    
+
+    #Exemplo ediciplinas
+
+
+    #Se o gradiente for igual a zero, e H(X) for deifinida positiva, então X barra é um minimo local
+
+
+    #Inersia é para avançar mesmo em minimo local pelo caminho, mantendo a direção do gradiente anterior. Isso pode fugir d eminimos locais ruins
+    
+
+
+#Desocbri direção, gradiente descendente
+    #Qualquer vetor transposto com ele é a norma dele ao quadrado
+    #
+
+    #Dois tipos de valor absoluto para gradiente
+        #Valores quadrados, quando não D não nromalizados
+        #Valores Absolutos, quando você normaliza D antes
+
+
+#Numero maximo de interaçẽos para rodar o algortimo para encontrar o ponto mínimo
+    #O Alpha mutias das vezes é travado, se for muito pequeno, fica lento e se for muito grande ele ocila
+    #Para definir quando ele vai parar (Pois o D nunca vai ser zero praticamente)
+        #
+
+
+
+
+    
