@@ -44,5 +44,17 @@
         #Expressão LogitY
         
 
+    #Mesmoa ssim pode acabar gerando uma disperção alta, pois se assume um "Angulo" igual para ambas
+        #Isso ocorre às vezes pois é necesasrio uma variação conjunta em variáveis invés de uma analise separada
+        #Isso é feito utilizando uma nova variável que sera o produto de ambas X3 = X1 * X2. (No exemplo é X3 = Total * SexoM)
+            #Note que o SexoM continua sendo binário
 
-    #
+
+
+    #Resultado fica bom no final
+
+
+    
+
+
+
