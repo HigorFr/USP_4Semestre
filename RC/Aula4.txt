@@ -5,7 +5,7 @@ Meios  físicos de transporte da ethernet
     Ethernet é o protocolo usado para trasnmitir informações
     Unidade de Bit transportada
 
-    Elace físico
+    Enlace físico
 
 
     Par Trançado é o fiozinho que conecta na LAN, tem duas categorias, normalmente a 4 com 10 MPBS e a 5 com até 100MPBS. É a mais comum

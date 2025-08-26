@@ -36,7 +36,7 @@
     #No fim em variaveis categorias terá um elemtno a mais nos valores 1,que não ocorrerá em categorias 0 (Já que o beta vai estar mutiplicando por 0)
         #Então é como se fosse dois modelos, e você tivesse separando eles e explicando a diferença através de uma soma (Que pode ser "ligada ou desligada")
     #contudo ocorre efeitos de "saturação". (Quanto menos algúem gasta com alimentação, menos ela tende a diminuir o gasto), Ou seja, a "velocidade de variação" vai diminuindo ou aumentando.)
-        k#Isso pode ser capturado por curvas em formato de S para pegar esse comportamento para dar mais precisão
+        #Isso pode ser capturado por curvas em formato de S para pegar esse comportamento para dar mais precisão
 
 
 
@@ -51,7 +51,7 @@
 
 
 
-    #Resultado fica bom no final
+    #Resultado fica bom no final, voltando através da escala original vira uma curva muito boa
 
 
     
