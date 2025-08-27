@@ -15,4 +15,8 @@
 #Aula de fato   
     #instruções, todas já vistas
     #SUBLEQ (Dá para escrever todas as funçẽso de um computador só em uma instrução, incrível)
-    
+
+
+
+
+

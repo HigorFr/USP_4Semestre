@@ -1,1 +1,62 @@
-#
+#Atraso e Camadas
+    #Parte importante para estruturar a Aula
+
+
+#Atraso é LAG, Ping.
+    #O mais comum é o lag de sair do computador A até o computador B basicamente
+    #Ping é o atraso de Round trip time, ou seja, tempo de ida e volta.
+    #Não tem tanta relação com a largura de banda, exceto em pacotes grandes onde preciso ocupar muito.
+
+
+#Causas do Atraso
+    #Atraso de propagação é a da distância que a informação tem que correr, velocidade é praticamente fixa (Quase a luz no vácuo) então isso afeta muito)
+        #Distancia pela velocidade é o tempo de atraso (Impossível de se livrar)
+        #Coloca unidades (Análise dimensional, 8 bit = byte )
+
+    #Atraso de transmissão é aquele referente ao tempo de colocar o pacote no enlace, depende muito do tamanho. Formula é tamanho/taxa de transmissão. Cada nó terá suas especificações
+
+    #Atraso de enfileiramento, é o atraso que o pacote ficou parado no roteador esperando sua vez de ser mandando, ele até que tem maneira específica de calcular, mas no geral é impossível ter uma precisão lógica
+
+    #Atraso de processamento é o tempo que o roteador demora para processar e rotear o sinal, normalmente é algo minúsculo, quase desprezível
+
+    #Atraso total é a distancia de todos.
+
+
+#Perda de pacote
+    #Bem distitno do Atraso, contudo para o usuário a perda de pacote parece eu atraso longo.
+    #Quando um pacote se perde, o computador tem que tentar novamente depois um tempo pré-definido, e esse tempo é bem maior quem um atraso
+
+    #Interferência eletromagnética estraga bits do pacaote, muito raro, normalmente enlare não guiado
+    #Ou o buffer de espera de um roteador fica cheio e chega mais um. Ele simplesmente não é armazenado em lugar nenhum e some.
+
+#Vazão
+    #È basicamente o quanto um enalace consegue transmitir.
+    #Limitado pela menor capacidade do processo, sempre há um gargalo.
+    #De fim a fim é sempre a menor de todas, contudo existe enlaces maiores para acumular vários enlaces menores
+    #Se diz que o miolo da internet tem vazão infinita, então o objeto de estudo é as pontas
+
+
+
+#Engenharia de Software
+    #Soluções muito próximas para determinado problemas
+    #Padronização
+    #Veio da arquitura (Contrução mesmo)
+    
+
+
+#Camada serve para generalizar funcionamento das operações. Ninguém da camada acima precisa saber como a abaixo funciona, só usar como uma interface
+    #Aplicação -> Maior parte dos programadores trabalhavam aqui. Mais perto
+    #Transporte ->
+    #Rede ->
+    #Enlace -> Endereço mac
+    #Física -> Não será abordado, mas é literalmente os materiais, o fourrier, engenharia que cuida, elétrica ou eletrônica.
+
+
+
+#Tem duas camadas extrar que na cosntrução não foram incluídas e hoje em dia faz falta. Ficariam entre Transporte de aplicação
+    #Modleo OSI
+        #Camada de Sessão -> Informação de sessão, estado, contexto da comunicação. Cookies é uma gambiarra para guardar estado.
+        #Camada de Apresentação -> Não é camada visual, e não tem relação ennhuma com apresentação em sí. Transforma daddos 
+
+
+#SSL por exemplo é uma gambiarra feito misturado nas camadas de aplicação e transporte
