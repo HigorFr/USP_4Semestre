@@ -11,3 +11,7 @@
     # Atendimentos Médicos - DAta, Hora,
     # Paciente - CPF, nome, Endereço Completo e Telefone de Contato  -
     
+
+
+#Gráfica eu não fiz
+    
