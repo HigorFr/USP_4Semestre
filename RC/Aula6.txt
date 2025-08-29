@@ -1,0 +1,92 @@
+#Ia ter a prova mas devido o trem parado
+
+#A partir de agora é o conteúdo de uma outra provinha      
+
+
+#RTT é o tempo de ida e volta (Ping)
+    #Por isso o traceroute as vezes podem apresentar tempos que não fazem sentido
+
+
+
+#Camada de aplicação:
+    #Protocolos
+    #UDP
+    #TCP
+    #Progrmação com sockets em java (O Socket em sí é fácil)
+    #Outras: HTTP, DNS
+    #Criar protocolo
+
+
+#EP 1
+    #Desenvolvimento  até 3 pessoas, 
+    #Aplicação distribuída, rodando em duas máquinas
+    #Pode usar hardcoded para informação ou txt (Para não prrecisar usar banco de dados)
+    #Pode fazer híbrido
+        #Servidor só avisa quem ta online e off, e define a conexão peer-to-peer
+        #Keep Alive - Manter conectado
+    #Dois executáveis, não é página na WEB. Pode usar qualquer linguagem
+    #Focar na complexidade de mensagem
+    #Dead Hackoning em tempo real 
+    #Relatório 50% do EP, Testes
+    #bibliotecas não podem esconder o socket, devem ser criados e excluídos
+
+
+#Infitas aplicações precisam disso
+    #Email, Web, Jogo, Computação em grade.
+    
+
+
+#Criando aplicação
+    #Programas executaveis que rodam em máquinas diferentes
+    #Não precisa esquecrever software para dispostiivo de red.
+
+
+
+#Peer-to-peer
+    #Conta específica para cálculo
+    #Melhora eficiência pois data centers acumulam muito processamento
+    #Quando é pura, você tem menos segurança
+        #Mais barato
+        #Facilmente escalável, pois não depende de servidor nenhum
+        #Muito difícil de admnistrar
+
+#Hibrido
+    #Aquele exemplo do skype
+
+
+
+##OBS: Algumas vezes o autor do livro confunde thread com processos. (Tomar cuidado)
+
+
+#CLiente servidor
+    #cliente quem começa e o servidor sempre o que recebe
+    #processos são a particulo que se comunica dentro de cada hospedeiro, utilziam sockets
+        #Algumas pessoas utilziam sockets até para comunicação entre processos no MESMO computador. (Literalmente usando portas)
+        #Usaremos isso para testar o EP depois
+    
+
+
+#Sockets, o que são eles afinal
+    #São uma abstração, feito pelo sistema operacional e que gerencia isso
+    #Ele é um pacote que inclui tudo necessário para a comunicação ocorrer
+    #Normalmente tem dois tipos de socket, TCP e UDP na interner.
+    #TCP é mais seguro, garante entrega na ordem e UDP é mais rápido.
+
+    #Quando você vai fazer o uma API você escolhe o protocolo e certos parâmetros
+
+
+#Endereçando processos
+    #IP é o endereço do computador, mas isso ainda não é específico suficiente
+    #Porta é o numero, o intero que idenficia o socket. (Então é uma porta por socket, pode ter até 64K )
+        #Normalmente numeros menores são padrões definidos, se usa dos 1024 para cima.
+    #Ex 80 é http
+
+    #No fim então é composto por IP:Pporta. IP vai cobeçalho do transporte. A porta em sí fica na camada de baixo
+    
+
+
+
+
+
+
+
