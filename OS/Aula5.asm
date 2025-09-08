@@ -95,7 +95,7 @@ Sistemas Interativo
     #Você ordena incialmente pelo tamanho, e conforme vai chegando novos você compara quanto tempo falta para terminar com o que está processando, se for, você troca  (porque esse pode trocar pois e premptivo)
     #Nesse caso o que precisa de mais tempo vai ser mais prejudicado ainda que no anterior
 
-    #Na pratica é muito dificil ser imune à starvation. O mais comum é de tempos em tempos os maioroes rodarem, ou eles nunca rodam.
+    #Na pratica é muito dificil ser imune à starvation. O mais comum é de tempos em tempos os maioroes rodarem, ou eles nunca rodam.mconsconadkjwdadwlkajwdlajwdlkajwdlkawjdlakwdjlakwdjlakwdjalkwdjalkwdjalkwdjalkwdjalkwdjalwkdjalwkdjalwkdjalwdkjalwdkj.mcn,m.n,emn,
 
 
 

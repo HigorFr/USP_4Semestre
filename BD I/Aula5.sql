@@ -8,7 +8,7 @@
     # Enfermeiro - Nome Completo, CRE e Enfermeiro Chefe (Supões só um)-  Atende à só uma ala no máximo
     # Planos de Saúde - Nome único, N Telefone - Tem que ter um médico
     # Médicos - Nome, Especialidade, CRM - Podem estar credenciados à um plano de saúde
-    # Atendimentos Médicos - DAta, Hora,
+    # Atendimentos Médicos - Data, Hora,
     # Paciente - CPF, nome, Endereço Completo e Telefone de Contato  -
     
 
