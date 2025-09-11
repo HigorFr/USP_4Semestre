@@ -39,3 +39,7 @@
 #Tem varias unidades funcionais, mais tudo isso já foi visto em OAC I, a tabela que representa um computador.
 
 #Tem o monociclo e o multiciclo
+
+
+
+
