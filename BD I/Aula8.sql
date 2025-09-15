@@ -21,6 +21,4 @@
 #Comandos na slides
 #infinidade de tipos de dados, todos documentados no PostgreSQL
 
-#Restrições podem tem nome (Constraint nome_da_restrição
-
-)
+#Restrições podem tem nome (Constraint nome_da_restrição)
