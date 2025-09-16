@@ -17,8 +17,8 @@
     #Controle de transações (Será visto em BD 2), para que falhas não sejam percebidos pelo usuário e e falhas não sejam percebidas pelos usuários
     #Mecanismos de interação com linguages de progrmação (Usado muito na WEB ) JBDC é a que será usada nos EPS
 
-
 #Comandos na slides
 #infinidade de tipos de dados, todos documentados no PostgreSQL
 
 #Restrições podem tem nome (Constraint nome_da_restrição)
+
