@@ -199,4 +199,28 @@
     #Onde "e" é o erro, T é a árvore, t é o nó que estou
 
 
+#Para chegar em uma estimativa da taxa de erro de probabildiade temos uma formula
+    #Basicamente é 1 - o mior erro dentre as classes, depois adiciono um peso (Normalmente o proprio K quantidade de classes)
+        #Esse peso é para durante o treinamento ele não ???
+
+
+
+#Para chegar em uma estimativa da taxa de erro de probabilidade temos uma formula
+    #Basicamente é 1 - o maior erro dentre as classes, depois adiciono um peso (Normalmente o proprio K quantidade de classes)
+        #Esse peso é para durante o treinamento ele não se torne muito otimista em relação a classes com poucos exemplos
+
+
+#Para chegar no erro é de baixo para cima, ele vai cortando o que dá ate não dar mais
+    #Compara sempre se o erro dos filhos é comparável com o do pai, se for pelo menos igual, vale a pena manter o galho.
+    #Para isso é tirado uma média pondearada das amostras com o % de erro.
+    
+
+#Deposi ainda é adicionado no erro da árvore uma penalização por complexidade, que é o alpha vezes o número de folhas
+    #Isso é para evitar que a árvore fique muito complexa, e acabe se tornando um overfitting
+    
+
+
+
+
 #porra do jogo do garfield lembrar
+

@@ -1,0 +1,68 @@
+#hoje é p2p
+
+
+
+#UDP -> Velocidade
+#TCP -> Garantia
+
+
+
+#Como encontrar peers em uma rede distribuida
+    #Dynamic hash table, fazer uma página rapidinho para procurar informações e deixar como ativdade extra.
+
+#Exemplo dos arquivos
+    #Um servidor tem a copia do arquivo e depois de um tempo vários cliente possuem a cópia
+    
+    #Em um cenário servidor cliente, o servidor tem que mandar N vezes a copia do arquivo para N clientes, o tempo disso vai ser ditado pela taxa de trasminssão, N * F (Tamanho do arquivo) sobre upload. Ou seja vai depender da velocidade de uplaod
+        #As vezes o tempo pode ser calculador pelo cliente mais lento (Gargalo), então fica N*F/Velocidade mais lenta de donwload
+        #O tempo máximo obviamente vai ser o maior desses tempos
+        #Isso normalmente forma um gráfico linear de tempo de servidor e quantidade de clientes. Normalmente chamado de "Grafíco Típico cliente-servidor"
+
+    #Em um modelo p2p, o servidor tem que mandar obrigatoriamente só uma vez o arquivo, depois os outros clientes podem enviar
+        #Aqui continua valendo a regra do cliente mais lento
+        #Poderia usufrir de "Multicast", que é basciamente mutiplicar o pacote no próprio roteador (Exige IPV6, por isso não é tão comum)
+        #NEsse caso também, não faz sentido mandar coisas iguais na redes, você manda fragmentos diferentes para vários computadores para que eles também podem trocar entre sí. (Invés de todo mundo ter a pt1 e ninguém trocar com ninguém)
+        #Nesse caso o upload é a soma geral, a formula fica, a maior entre:
+            A- F/us, Velocidade de só o servidor mandar
+            B- F/min O cliente com download mais lento, 
+            C- NF/Us + soma(ui)  Ou seja, a velocidade de todos os clientes mandando juntos
+        #Nesse caso o tempo vai tendendo à uma constante caso fosse tratado como um gráfico
+        #O tempo pode subir ou descer depednedo se a tarefa
+
+
+
+
+
+#Programação em SOckets, exemplo raso
+    #Objetivo, enviar a receber mensagens de outro comptuador
+    #No java é alocado pelo scanner mesmo, mas invés de ser pelo Sysyem.in é por Sockets. (Datagram)
+    #Isso existe faz tempo, em 81, empresas tinham poucos computdores, então os funcionarios tinham interação com eles via um terminal, conectado no pc por rede.
+    #Unix tem biblioteca disso desde o inicio, pois ele já nasceu conhencdo essa premissa.
+    #Código trava no recive, por isso sempre usa-se thread.
+    #Sempre devovla os Sockets
+    
+
+#Cliente não precisa de IP e Porta explicito na mensagem, pois é óbvio a necessidade, mas precisa de um destino do servidor claro.
+    #Mútiplos clientes vão usar de um mesmo servidor, Socket já tem uma fila interna de dados que recebe.
+
+#Em tcp, normalmente o socket já inicia conectando em um servidor, e se o servidor não tiver de pé ele já cai.
+
+
+
+#Há fluxos de saías e fluxos de entrada, o socket cumpre o papel de segurar os dois. Um monitor e um teclado também realizam esse fluxo, mas o socket é o especifico para internet
+
+#Caso processo não seja encrrado o socket continuado ativado até ser morto por um garbage collector ou o pc reiniciar, isso pode gerar problemas já que lee consume muito recurso do computador.
+
+#Como um servidor consegue gerenciar vários pedidos em uma mesma porta?
+    #Normalmente tem uma porta só para receber e direcionar para outra porta, isso é o padrão mas tem que ser implemntado na mão.
+    #Essa porta também noramlemnte decide se quer realizar a conexão ou não
+
+    #Mesmo assim, alguma identificação diferente consegue diferenciar o socket, mesmo em uma mesma porta, o que gera ainda mais redundância.
+
+
+#Faltou HTTP que não anotei
+
+
+
+
+
