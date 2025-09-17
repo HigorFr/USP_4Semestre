@@ -46,9 +46,9 @@
 
 #Camada serve para generalizar funcionamento das operações. Ninguém da camada acima precisa saber como a abaixo funciona, só usar como uma interface
     #Aplicação -> Maior parte dos programadores trabalhavam aqui. Mais perto
-    #Transporte ->
-    #Rede ->
-    #Enlace -> Endereço mac
+    #Transporte -> Controla protolo
+    #Rede -> Faz o caminho 
+    #Enlace -> Endereço mac, acha a proxima máquina
     #Física -> Não será abordado, mas é literalmente os materiais, o fourrier, engenharia que cuida, elétrica ou eletrônica.
 
 
