@@ -1,0 +1,104 @@
+#HTTP e WEB
+
+
+#URL é um Universal Resource Locator
+#HTTP é o protoclo para páginas WEB, trocar arquivos HTML
+#Hipertexto é basciamente qualquer texto que contenha links ou objetos
+
+
+#Pagina WEB consiste de objetos, musicas, imagens e texto
+
+#Antigmaente os siteas podiam pedir para esconder a barra de endereço (E isso podia dar merda, por isso nenhum navegador atual utiliza isso atualmente)
+
+
+#HTML surgiu na CERN, (O grande laboratório), como uma padronização de referências em textos de artigos. Por isso sua estrutura báscia não tinha foco em criptografia ou segurança (Era na verdae o mais aberto possível)
+
+
+#Todo HTTP utilzia o TCP na camada de transprote para realizar a comunicação
+    #Faz sentido, pois não se quer perder objetos, já que todos os bits são importates
+    #Isso significa que vai precisar de no minimo 2 RTTs para pegar o primeiro objeto (Já o que o handshake precisa de um)
+    #Ele, em sua forma pura, não tem estado, ou seja, não tem contexto ou maneira de guardar informação. (Como cookies)
+        #Em aplicações normalmente se usa scripts de javascript e banco de dados
+
+
+#Tem http persisten e não persistente
+    #Não persistente, é quando a conexão fecha instantanemente a cada objeto que você pede. (Abrir conexão e fechar principalmente são muito trabalhosas). No geral é mais ineficiente, a ideia é o recurso voltar mais cedo para o servidor.
+    #Persistente é mais comum, então você mantem a coenxão até ficar com todos os objetos (Era o padrão até então)
+
+#Diagrama de sentinha para indicar tempo passando conforme eventos
+    
+
+#As mensagens HTTP tem tipos: Requsição, e Resposta
+    #Nunca o servidor vai pedir algo do cliente, sempre o cliente que manda
+    #Maioria das vezes utilizamos tipos GET ou POST
+        #Tem formatação especifica: "TIPO /objeto.html HTTP/versão"
+        #Não confundir versão do HTTP com do HTML, HTML mudou bastante diferente do HTTP
+    
+    #Tem um cabeçalho enviado junto
+        #Host: "Quem eu estou pedindo (google.com)", raramente é usado para alguma coisa
+        #User-agent: "Navegador que está pedindo (eu)"
+        #Connection: "Tipo de conexão, se vai persistir ou não (TIpo, se eu só vou pegar objeto e já sair ou não)"
+        #Accept-language: "Lingua que o navegador está usando, para permitir o site facilitar acessibilidade"
+            #Por algum motivo, alguns sites utilziam a localização do seu IP invés da lingua. (O que não faz sentido nenhum já que posso estar viajando)
+
+    #Formato especifico para mostrar semântica e sintaxe nos slides
+        #CR é para voltar para o inicio e LF é ir para linha debaixo (Isso veio do padrão de máquinas de escrever para internet)
+        #Isso também é diferenciado no UNIX e Windows, no Unix tem os 2 caracteres e Windows utilizava apenas um caractere para tudo isso
+        #Depois de um tmepo, esse cabeçalho ainda foi usado para criar cookies, ou seja, muito útil
+        #Foramto bem especificado, vale a pena ver
+
+        #ATIVIDADE: 
+            Realizar um TELNET para algum servidor WEB #feito
+
+    #Método POST é para o cliente enviar informações para usuário
+        #As vezes informações são envidas direatmente pela URL depois do "?", isso da para ver até no gogole, com os espaços separados por "&", mas é pouca segurança
+            #Inclusive as vezes os sites mandam esconder a barra de URL para não msotrar que estão fazendo isso
+        #O post é já pode ser criptografado, todo httpS obirgatoriamente é criptografado é quase impossível quebrar
+        #
+
+    #Head é quse um GET, mas só vem o cabeçalho. Normalmente era usado para debugar e não ficar baixa coisa inútil
+        #Atualemnte pouco usado também, já que a banda atualmente supre esse problema.
+
+
+
+#Principal diferença HTTP/1.0 e HTTP/1.1
+    #O 1.1 tem dois comandos a mais, o PUT para colocar arquivos no servidor ou DELETE para remover arquivos do servidor.
+    #Difilmente são usados, FTP já cumpre esse propósito, principalmente como legado
+
+
+    
+
+#Respostas de HTTP
+    #Linha de status é no formato "HTTTP/Versão Codigo Descrição_Do codigo" tipo 200 OK
+        #A linha de texto era opcionmal mais foi adicionado
+    #Também tem linahs de cabeçalho especificas explicando o que vai chegar
+
+    #Tipos de erro é 200 OK, ou 301 movido para outro lugar, 400 é request não entendida etc.. entre outros
+
+
+
+#cai na prova
+#cookies
+    #É um estado, guarada as referencias, o que você já fez no site, onde você estava estava
+        #Isso ajuda muito pois o servidor já pode saber o que o usuario fez e configurar a pagina para ele
+    #HTTP não tinha isso por padrão, então é guardado em um cabeçalho e deram esse nome "Cookie"
+    #Fica tipo "Esta logado ou não" "Carrinho de compra" etc.. isso obviamente fica visível ao usuário também para ele alterar.
+        #Inclusive pode alcançar status que ela não deveria chegar. Se um site for muito mal feito ele pode até guardar a informações se você é adm ou não.
+        #O jeito sério de usar é em aplicações do proprio usuário, o site envia um numero de cookie para o navegador e ele guarda como uma chave para uma memŕoia interna dele, depois quando você enviar uma informção nova o servidor vai olhar esse cookie e responder de acordo e atualiza-lo utilizando a chave.
+            #A pagina vai ser criada com base nisso.
+    
+    #Aualemnte é quase impossível navegar sem cookies. A legislação primeiramente europeia colocou leis para obiergar os sites a perguntar o que o usuário quer.
+        #Pois isso era usado para acessar seus dados e descobrir suas preferencias para anuncios, as vezes invadindo a privacidade.
+
+#Cache WEB  
+    #Guarad objetos para serem usados novamente, muito parecido com o que tem entre a memória e o processador.
+        #Também tem vários níveis de chave, primeiro o navegador, depois do sistema operacional, depois proxy se tiver e ainda tem os cache espalhados pela internet
+        #Inclusive o objetivo incial do proxy em emrpesas não era para ficar bloqeuando site (isso é uma funcionalidade adicionada extra), o objetivo era só economizar requisição de todo mundo da empresa em sites muito comuns.
+    #O cache sempre te dá o que ele tem, e nem sempre ele tem tudo, então ele só pede o que falta para completar
+
+        
+
+
+    
+
+    
