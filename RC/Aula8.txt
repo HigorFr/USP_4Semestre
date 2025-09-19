@@ -5,7 +5,7 @@
 #UDP -> Velocidade
 #TCP -> Garantia
 
-
+#Pesquisar sobre multicasting
 
 #Como encontrar peers em uma rede distribuida
     #Dynamic hash table, fazer uma página rapidinho para procurar informações e deixar como ativdade extra.
