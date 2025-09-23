@@ -108,27 +108,42 @@
     #Entropia é uma boa métrica para isso, pois ela mede a incerteza dos dados. Caoticidade.
 
     #Utiliza-se os proprios dados como candidados de parametro para realizar o split, e será o dado da entropia que irá ditar
+        #Para cada candidato, testa os erros que acontecerão com base na classe target e soma os erros ponderados ou utiliza outra métrica para definir qual utilizar.
+        #Quando meis perfeitamente ele dividir, ou seja, menos erros, menor e a entropia, melhor o split. Ou seja, entropia é o quanto falta de informação para classificar perfeitamente, uma proproção de organização.
+            #Se a entropia é 0, está perfeitamente classificado
 
-    #
+        #No geral utiliza-se outra métrica, está no slide, info(D) = |d1|/|D|*Entropy(D1) + |d2|/|D|*Entropy(D2)
+            #Quando a divisão é meio, a entropia é máxima, e é minima quanddo está perfeitamente dividido, ou seja, probabilidade/proporção 0 ou 1
+            #Para calcular a entropia é uma formula utilziando um critério que respeita isso. No slide.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#No geral, os testes quando podem ser feitos utilizando vários atributos em conjunto.
+    #Logo pode ser 2^n, onde n é a quantidade de atributos, o que é inviável se for testar todos.
+    #Existem Algortiimos Genéticos que podem ser utilizados para isso, ou seja, eu combino elementos para que o os filhos melhorem a performance dos pais, e assim por diante.
+        #Para isso criamos uma matriz binária, onde 1 é o atributo selecionado e 0 o não selecionado, que são os Genes.
+        #Pega linha distinta e faz o cruzamento entre elas (Crossover e mutação), fazendo uma nova população, e assim por diante. E então você vai indentificando os atrbituos são mais importantes (Ou seja, aqueles genes que ficam com 1 mais vezes).
+        #Nem sempre o genetico compensa, pode ser que o 2^n, não tenha um n tão grande assim para precisar disso. (Genetico também nem sempre encontra o ótimo)
 
 
+#==========
+
+#AS outras medidas para descobrir se a escolha de features é boa:
+#Informação Ganha
+#Razão de Ganh  
+#Gini 
 
 
+#Entropia = -pi*log2(pi) no geral.
 
+
+#Comçando por Ganho de informação
+    #É basicamente a diferença entre a entropia antes e depois do split. Ou seja, antes do atribute
+    #Ganho(A) = Info(D) - InfoAnterior(D)  (Notação de ganho normalmente 'delta G)
+    #E ai eu uso isso como medida, calculo de uma classe pai InfoAnterior e vou testando com todos atributos como filhos, e vejo qual deles me dá o maior ganho de informação, ou seja, a maior redução de entropia.
+
+    #A info de fato será Info = E(t1) + E(t2) + ... + E(tn), mas tenho que mutiplicar cada uma dessas entropias pela proporção de dados que caíram ali, ou seja, |ti|/|D|, para ponderar o erro.
+
+    #VOu registrando cada melhoria e vou escolhendo o maior ganho de informação, ou seja, a maior redução de entropia.
+        #Os primeiros na arvore (topo) são os que mais reduzem a entropia, ou seja, os com maior ganho
 
 
 
