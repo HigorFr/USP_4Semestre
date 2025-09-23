@@ -146,10 +146,9 @@
         #Os primeiros na arvore (topo) são os que mais reduzem a entropia, ou seja, os com maior ganho
 
 
-
-
-
-
+    #O problma desse méotod é que ocrre risco dele escolher um atributo que diferencia muito e não siginifica nada, tipo CPF
+        #Para resolver isso tem um calculo feito penalizando o numero de Split, chamado Razão de ganho, que é Ganho(A)/SplitInfo(A)
+        #Formula do splitinfo 68 ou 67 não lembro
 
 
 
