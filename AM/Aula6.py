@@ -151,7 +151,7 @@
         #Formula do splitinfo 68 ou 67 não lembro
 
 
-
+    #gini não entnedi porra nenhuma, é grau de impureza seja o que for isso
 
 
 
