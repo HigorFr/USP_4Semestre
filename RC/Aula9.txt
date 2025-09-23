@@ -2,7 +2,7 @@
 
 
 #URL é um Universal Resource Locator
-#HTTP é o protoclo para páginas WEB, trocar arquivos HTML
+#HTTP é o protoclo para páginas WEB, trocar arquivos HTML               
 #Hipertexto é basciamente qualquer texto que contenha links ou objetos
 
 
@@ -11,7 +11,7 @@
 #Antigmaente os siteas podiam pedir para esconder a barra de endereço (E isso podia dar merda, por isso nenhum navegador atual utiliza isso atualmente)
 
 
-#HTML surgiu na CERN, (O grande laboratório), como uma padronização de referências em textos de artigos. Por isso sua estrutura báscia não tinha foco em criptografia ou segurança (Era na verdae o mais aberto possível)
+#HTML surgiu na CERN, (O grande laboratório), como uma padronização de referências em textos de artigos. Por isso sua estrutura báscia não tinha foco em criptografia ou segurança (Era na verdade o mais aberto possível)
 
 
 #Todo HTTP utilzia o TCP na camada de transprote para realizar a comunicação
@@ -53,10 +53,10 @@
     #Método POST é para o cliente enviar informações para usuário
         #As vezes informações são envidas direatmente pela URL depois do "?", isso da para ver até no gogole, com os espaços separados por "&", mas é pouca segurança
             #Inclusive as vezes os sites mandam esconder a barra de URL para não msotrar que estão fazendo isso
-        #O post é já pode ser criptografado, todo httpS obirgatoriamente é criptografado é quase impossível quebrar
+        #O post já pode ser criptografado, todo httpS obirgatoriamente é tem ele criptografado e quase impossível quebrar
         #
 
-    #Head é quse um GET, mas só vem o cabeçalho. Normalmente era usado para debugar e não ficar baixa coisa inútil
+    #HEAD é quse um GET, mas só vem o cabeçalho. Normalmente era usado para debugar e não ficar baixa coisa inútil
         #Atualemnte pouco usado também, já que a banda atualmente supre esse problema.
 
 
@@ -77,13 +77,14 @@
 
 
 
-#cai na prova
+#Cai na prova
+
 #cookies
     #É um estado, guarada as referencias, o que você já fez no site, onde você estava estava
         #Isso ajuda muito pois o servidor já pode saber o que o usuario fez e configurar a pagina para ele
     #HTTP não tinha isso por padrão, então é guardado em um cabeçalho e deram esse nome "Cookie"
     #Fica tipo "Esta logado ou não" "Carrinho de compra" etc.. isso obviamente fica visível ao usuário também para ele alterar.
-        #Inclusive pode alcançar status que ela não deveria chegar. Se um site for muito mal feito ele pode até guardar a informações se você é adm ou não.
+        #Inclusive pode alcançar status que ela não deveria ter acessp. Se um site for muito mal feito ele pode até guardar a informações se você é adm ou não em cookies.
         #O jeito sério de usar é em aplicações do proprio usuário, o site envia um numero de cookie para o navegador e ele guarda como uma chave para uma memŕoia interna dele, depois quando você enviar uma informção nova o servidor vai olhar esse cookie e responder de acordo e atualiza-lo utilizando a chave.
             #A pagina vai ser criada com base nisso.
     
@@ -92,7 +93,7 @@
 
 #Cache WEB  
     #Guarad objetos para serem usados novamente, muito parecido com o que tem entre a memória e o processador.
-        #Também tem vários níveis de chave, primeiro o navegador, depois do sistema operacional, depois proxy se tiver e ainda tem os cache espalhados pela internet
+        #Também tem vários níveis de cache, primeiro o navegador, depois do sistema operacional, depois proxy se tiver e ainda tem os cache espalhados pela internet
         #Inclusive o objetivo incial do proxy em emrpesas não era para ficar bloqeuando site (isso é uma funcionalidade adicionada extra), o objetivo era só economizar requisição de todo mundo da empresa em sites muito comuns.
     #O cache sempre te dá o que ele tem, e nem sempre ele tem tudo, então ele só pede o que falta para completar
 
