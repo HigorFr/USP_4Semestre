@@ -60,9 +60,6 @@
     #Mesmo assim, alguma identificação diferente consegue diferenciar o socket, mesmo em uma mesma porta, o que gera ainda mais redundância.
 
 
-#Faltou HTTP que não anotei
-
-
 
 
 
