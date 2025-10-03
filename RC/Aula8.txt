@@ -14,7 +14,7 @@
     #Um servidor tem a copia do arquivo e depois de um tempo vários cliente possuem a cópia
     
     #Em um cenário servidor cliente, o servidor tem que mandar N vezes a copia do arquivo para N clientes, o tempo disso vai ser ditado pela taxa de trasminssão, N * F (Tamanho do arquivo) sobre upload. Ou seja vai depender da velocidade de uplaod
-        #As vezes o tempo pode ser calculador pelo cliente mais lento (Gargalo), então fica N*F/Velocidade mais lenta de donwload
+        #As vezes o tempo pode ser calculador pelo cliente mais lento (Gargalo), então fica F/Velocidade mais lenta de donwload
         #O tempo máximo obviamente vai ser o maior desses tempos
         #Isso normalmente forma um gráfico linear de tempo de servidor e quantidade de clientes. Normalmente chamado de "Grafíco Típico cliente-servidor"
 
