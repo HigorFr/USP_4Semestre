@@ -1,0 +1,45 @@
+#NAC e ACK
+    #Paridade apra receber bytes durantes transmissões, usa um "CHEKSUM" para saber se algo está corrompido ou não
+    #Usado no TCP
+
+    #Cliente sempre envia um ACK para falar que recebeu
+    #Pode dar BO até na propria mensagem de ACK, então server sempre reenvia em caso de dúvida ou corrupção
+    #E por isso eu também sempre um numero indicando qual segmento pertence essa mensagem
+    #Nesse caso não precisa de NAC, pois o cliente também fala qual foi o último pacote que ele recebeu no SEG
+    #Quando ele manda ACK 0 significa que ele recebeu
+
+    #COM ACK, CHECKSUM E SEG eu já resolvo problema de byte mudar.
+
+
+    #Mas e problma do Pacote sumir?
+        #Se o dado sumir, o cliente não vai enviar ACK, e o servidor vai enviar
+        #o mesmo se o pacote ACK se perder, o máximo que vai acontecer é o cliente ter que enviar outro zero depois do servidor reenviar coisa reptida
+
+#Problema é que nesse sistema você espera mais doque envia, não usa nada do enlace
+
+    #Go back N, server não para de enviar, e cliente não para de receber, só vai enviar o ACK de todos > N se o N chegar.
+        #Se ele perde, não envia o ACK de nenhum para frente do N e joga todos > N fora. 
+        #O serveridor vai ver que N não recebeu ack referente e vai reiniciar o envio a partir dele (O mesmo ocorre se o ACK for perdido)
+        #Tem só um timer rodando
+
+
+
+#Buffer de seuqencia é a quantidade de bits que representa o tamanho recebido
+    #ele "da a volta" quando bate 255 e reseta.
+        #isso poder dar problema caso um pacote perdido seja de uma volta anterior
+
+
+#janela dezlizando conforme recebe o ACK
+    #sempe cai em provas
+
+
+
+
+#full duplex -> vai e volta ao mesmo tempo.
+    #Por isso se escuta e ouve ao mesmo tempo
+
+
+
+
+
+#Correção da provinha
