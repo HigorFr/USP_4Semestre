@@ -1,0 +1,7 @@
+Multicast
+
+Multicast, pelo que entendi é basciamente um méotdo de enviar um pacote de dados para um grupo de pessoas ao mesmo tempo invés de enviar um por um como seria no "unicast".
+
+Ele funciona basicamente com certos hosts se "inscrevendo" em um determinado grupo, e recebem um endereço especifico para se comunicarem com esse multicast. Então, se algum pacote for enviado para o endereço do multicast, todoes esses hosts também recebem o pacote.
+
+Isso é útil pois otimiza banda na rede, já que no sistema IPV4, pacote do tipo broadcast são enviados sempre para todo mundo, pois o IP é "compartilhado". Se fosse IPV6, a quantidade de IPs seria suficientemente grande para todos os dispositivos.

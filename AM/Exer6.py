@@ -1,84 +1,72 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from ucimlrepo import fetch_ucirepo 
+import kagglehub
 
+path = kagglehub.dataset_download("uciml/pima-indians-diabetes-database") #dataset de diabetes do pima mostrado na aula
+csv_path = f"{path}/diabetes.csv"
 
-from ucimlrepo import fetch_ucirepo
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-import numpy as np
+data = pd.read_csv(csv_path)
 
-#dataset
-heart_disease = fetch_ucirepo(id=45)
+X = data.drop("Outcome", axis=1).values
+y = data["Outcome"].values
 
-#separar o que eu quero descobrir
-X = heart_disease.data.features.values
-y = heart_disease.data.targets.values
-
-#Normalizar
+#normaliza
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
+X = np.hstack([np.ones((X.shape[0], 1)), X]) #fazer a cluna do bias
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
 
 
-
-def sigmoid(z):
-    return 1 / (1 + np.exp(-z))
-
-def compute_cost(X, y, w, lambda1, lambda2):
+def gradiente(X, y, w, lambda1=0.0, lambda2=0.0):
     m = len(y)
-    h = sigmoid(X.dot(w))
-    cost = (-1/m) * (y.dot(np.log(h)) + (1 - y).dot(np.log(1 - h))) + lambda1 * np.sum(np.abs(w)) + lambda2 * np.sum(w**2)
-    return cost
+    h = X.dot(w)
+    grad = (2/m) * X.T.dot(h - y)
+    grad += lambda1 * np.sign(w) + 2 * lambda2 * w
+    return grad
 
-def compute_gradient(X, y, w, lambda1, lambda2):
-    m = len(y)
-    h = sigmoid(X.dot(w))
-    gradient = (1/m) * X.T.dot(h - y) + lambda1 * np.sign(w) + 2 * lambda2 * w
-    return gradient
+def gradiente_descendente(X, y, w_init, lambda1=0.0, lambda2=0.0, lr=0.01, epochs=1000):
+    w = w_init.copy()
+    for _ in range(epochs):
+        grad = gradiente(X, y, w, lambda1, lambda2)
+        w -= lr * grad
+    return w
 
-def gradient_descent(X, y, w_init, lambda1, lambda2, learning_rate=0.01, epochs=1000):
-    w = w_init
-    cost_history = []
-    for epoch in range(epochs):
-        gradient = compute_gradient(X, y, w, lambda1, lambda2)
-        w -= learning_rate * gradient
-        cost = compute_cost(X, y, w, lambda1, lambda2)
-        cost_history.append(cost)
-        if epoch % 100 == 0:
-            print(f'Época {epoch}: Custo = {cost}')
-    return w, cost_history
-
-# Inicializar pesos
-w_init = np.zeros(X_train.shape[1])
-
-# Definir parâmetros de regularização
-lambda1 = 0.1  # Regularização L1
-lambda2 = 0.1  # Regularização L2
-
-# Treinar o modelo
-w_opt, cost_history = gradient_descent(X_train, y_train, w_init, lambda1, lambda2, learning_rate=0.01, epochs=1000)
+def treinar(X, y, lambda1=0.0, lambda2=0.0, lr=0.01, epochs=1000):
+    n_features = X.shape[1]
+    w_init = np.zeros(n_features)
+    w = gradiente_descendente(X, y, w_init, lambda1, lambda2, lr, epochs)
+    return w
 
 
-def predict(X, w):
-    return (sigmoid(X.dot(w)) >= 0.5).astype(int)
 
-# Fazer previsões
-y_pred = predict(X_test, w_opt)
+def predit(X, w):
+    y_hat = X.dot(w)
+    return (y_hat >= 0.5).astype(int)
 
-# Calcular acurácia
-accuracy = np.mean(y_pred == y_test)
-print(f'Acurácia no conjunto de teste: {accuracy * 100:.2f}%')
+def acuracia(y_true, y_pred):
+    return np.mean(y_true == y_pred)
 
-import matplotlib.pyplot as plt
+#fiz tudo numa função só, e ai só mudar o lamba dependendo do que quer fozer
 
-plt.plot(cost_history)
-plt.xlabel('Épocas')
-plt.ylabel('Custo')
-plt.title('Histórico de Custo durante o Treinamento')
-plt.show()
+w_lr = treinar(X_train, y_train, lambda1=0.0, lambda2=0.0)
 
+w_l2 = treinar(X_train, y_train, lambda1=0.0, lambda2=0.5)
+
+w_en = treinar(X_train, y_train, lambda1=0.3, lambda2=0.3)
+#valores de lambda colocados aleatoriamente
+
+y_pred_lr = predit(X_test, w_lr)
+y_pred_l2 = predit(X_test, w_l2)
+y_pred_en = predit(X_test, w_en)
+
+print("------------ACURÁCIAS------------")
+print(f"Regressão linear:            {acuracia(y_test, y_pred_lr)*100:.2f}%")
+print(f"L2:                          {acuracia(y_test, y_pred_l2)*100:.2f}%")
+print(f"Elastic Net:                 {acuracia(y_test, y_pred_en)*100:.2f}%")
