@@ -5,8 +5,10 @@
 # 3) Utilizar o conjunto de dados iris 
 
 
+#Feito com ajuda do GPT e dos códigos de exercicios anteriores
+
 '''
-1) Dedução
+1) Dedução da aula:
 
 Modelo:
   z_{ik} = x_i^T w_k
@@ -15,33 +17,35 @@ Modelo:
 Função objetivo (negativa da log-verossimilhança, média por amostra):
   L(W) = - (1/m) Σ_{i=1}^m Σ_{k=1}^K y_{ik} log p_{ik}
 
-Derivação do gradiente (passo a passo):
-1) Derivada parcial de log p_{ik} em relação às ativações z_{ij}:
+Derivada parcial de log p_{ik} em relação às  z_{ij}:
      ∂ log p_{ik} / ∂ z_{ij} = δ_{kj} - p_{ij}
    (δ é delta de Kronecker: 1 se k=j, senão 0)
 
-2) Pela cadeia, derivada de log p_{ik} em relação a w_r:
+Pela cadeia, derivada de log p_{ik} em relação a w_r:
      ∂ log p_{ik} / ∂ w_r = Σ_j (∂ log p_{ik} / ∂ z_{ij}) (∂ z_{ij} / ∂ w_r)
    como ∂ z_{ij} / ∂ w_r = x_i * δ_{jr}, obtemos
      ∂ log p_{ik} / ∂ w_r = (δ_{kr} - p_{ir}) x_i
 
-3) Agora derivamos L em relação a w_r:
+Derivada L em relação a w_r:
      ∂L/∂w_r = - (1/m) Σ_i Σ_k y_{ik} (δ_{kr} - p_{ir}) x_i
             = (1/m) Σ_i (p_{ir} - y_{ir}) x_i
-
-4) Forma matricial (vetorizada):
+            
+Forma matricial (vetorizada) mostado em aula
      P = softmax(X @ W)  (m×K), Y (m×K)
      ∇_W L = X^T (P - Y) / m   (d×K)
 
-Segunda derivada (Hessiana) — bloco por bloco:
-1) Gradient component para a classe r: g_r = (1/m) Σ_i (p_{ir} - y_{ir}) x_i
-2) Derivar g_r em relação a w_s:
+
+     
+     
+HEssiana, fazendo segunda derviada:
+Componente r: g_r = (1/m) Σ_i (p_{ir} - y_{ir}) x_i
+Derivar g_r em relação a w_s:
      ∂ p_{ir} / ∂ z_{is} = p_{ir} (δ_{rs} - p_{is})
      ∂ p_{ir} / ∂ w_s = p_{ir} (δ_{rs} - p_{is}) x_i
    Logo o bloco (d×d) H_{rs} é
      H_{rs} = ∂^2 L / ∂ w_s ∂ w_r^T = (1/m) Σ_i p_{ir} (δ_{rs} - p_{is}) x_i x_i^T
 
-3) Forma compacta usando Kronecker:
+Forma compacta:
      Defina S_i = diag(p_i) - p_i p_i^T   (K×K)
      Então a Hessiana total (dK × dK) vale
        H = (1/m) Σ_{i=1}^m ( S_i ⊗ (x_i x_i^T) )
@@ -58,10 +62,7 @@ Newton-Raphson (vetorizado):
   - Resolva H Δ = g_vec e atualize w_vec ← w_vec - Δ
   (na prática evita-se inversão explícita; resolve-se o sistema linear)
 
-Observações práticas:
-  - Construir H explicitamente tem custo e memória altos (dimensão dK × dK).
-  - Para d ou K grandes use L-BFGS ou métodos que usam produto H·v (CG).
-=============================================================================
+  
 '''
 
 
@@ -135,6 +136,8 @@ def newton_method(X, Y, W, epochs=10):
 # Inicialização
 W = np.zeros((X.shape[1], K))
 
+#Compração do NEWTOn (hessian) com só o gradiente
+
 # Gradiente
 W_gd = gradient_descent(X_train, Y_train, W.copy(), lr=0.1, epochs=500)
 
@@ -148,6 +151,5 @@ from sklearn.metrics import accuracy_score
 
 print("Gradiente:", accuracy_score(y_test, predict(X_test, W_gd)))
 print("Newton:", accuracy_score(y_test, predict(X_test, W_newton)))
-
 
 
