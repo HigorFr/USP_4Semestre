@@ -50,5 +50,5 @@ acuracia = np.mean(y_pred == y_test)
 
 print("Pesos finais:", p.pesos)
 print("Acurácia no teste:", acuracia)
->>>>>>> da94feade2eeedd6073ce19bd1422c9d38215645
+
 

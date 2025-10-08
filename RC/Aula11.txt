@@ -1,0 +1,130 @@
+#Só o conteudo da aula de hoje na provas
+
+#Relatório do EP, dia 21
+
+
+#Completar o que faltava de camada de transporte
+
+
+#Responsabildiade da camada de transporte é um socket chegar em outra, não confundir com a responsabilidade de rede.
+    #Analogia com correrio. O correrio entrega para o porteiro e ele separa nas caixas referentes.
+    #O Computador é o prédio, o Correrio é a de rede e o porteiro é de transporte.
+    
+#Camada de transporte então só funciona em sistemas finais, confere dados dando certas garantias além de dividir entre os sockets donos das mensagens. Essa coleta e envio além de divisão do que chega é chamada mutiplexação e demutiplexação respectivamente (Mesmo não sendo ele que faz o trabalho de dividir).
+
+#A camada de trnasporte então fica dentro do sistema operacional, e a camada de fica no hardware de palca de rede (seja nos computadores ou todos os equipamentos no caminho).
+    #Ou seja, diferente da rede, transporte está só na ponta
+
+#O TCP e o UDP tem diferençpa na demutiplexação
+    #TCP só recbee de quem ele está conectado
+    #UDP recebe de todo mas o identificado é o IP:PORTA
+
+#Cabeçalhos (E tamanho em bytes)
+
+#Cabeçalho UDP
+    #8 Origem
+    #8 Destino
+    #8 Tamanho da mensagem
+    #8 Para verificar integridade
+
+#Cabeçalho TCP (20 Bytes)
+    #No minimo 20 Origem
+    #No minimo  20 Destino
+    #ACK Numeros grandes, para não dar voltas
+    #Comprimento do Cabeçaho (Pensando no futuro caso seja necessário por informações a mais)
+
+    #Flag Dado urgente
+    #Flag PUSH (Joga para camada de aplicação independente da ordem)
+    # Flag R, S e F, três flags para Reset para resetar, Sync para sincronizar dado e Final para finalizar conexão
+
+    #Ponteiro dado urgerente é caso o flag dado urgente está ativo e ai ele lê para onde esse campo aponta nos dados. (Raro usar)
+
+    #Opções - Raramente usado, as vezes é para definri MSS
+
+    #
+
+    #Etc...
+    #Como tem muito, aumenta o custo da rede e computacional, por isso o UDP é muito útil
+
+
+#Aqui eu brisei
+
+
+
+#EstimedRTT
+    #Alpha é um numero de 0 a 1
+    #É basicamente um peso que dou para uma estimativa antiga em relação ao que eu amostrei para formar uma nova estimativa
+    #EstimatedRTT = (1-a)*EstimatedRTT + a * SampleRTT
+    #Normalmente alpha é um valor baixo, 0,125. Ou seja eu favoreço mais o histórico do que a amostra
+        #Isso vai meio que amortecendo a variação
+
+    #Mas também tem um desvio a ser adicionado. que tambem vai seguir uma média móvel.
+
+    DevRTT = (1-a)*DevRTT + a * |SampleRTT-EstimatedRTT|    (Meio que um desv.pad, feito com quadrados)
+    #Geralmente 0,25
+
+    #No final eu faço o Timeout como o EstimatedRTT + 4*DevRTT (Não necessariamente 4, é padrão também)
+
+
+
+#Geração de ACK
+    #O Ack é sempre o último valor sequencial (Desde o primeiro) que já chegou, ou seja, os que com certeza eu já tenho
+    #Tem um instrumento para economizar envio de ack, invés de enviar 1 e depois 2 quando chegar, eu espero um tempo X para enviar direto só 2 caso sejam pacotes em sequência
+    #Lembrando que se vier furado, você envia ACK imediatamente, isso ocorre na verade para qualquer anomalia
+    
+#Retransmissão rápida
+    #Não espera dar timeout, eu confiro se chegou uma quantidade X de ACKs repetidos e já mando de volta e reinicio o timeout
+    
+
+#Gerenciamento da conexão TCP
+    #Porque isso pra inicio de conversa? Pois se eu reabrir a porta pro mesmo servidor, pode ser que chega ACK de conexão antiga, e bagunça a conexão. Preciso fechar em ordens.
+    
+    #3 Vias - para abrir, sempre cliente inicia
+    #Primeiro envia Sync como 1, sem dados, para pedir conexão
+    #O servidor vai mandar um SYNACK, já envia numero de sequencia que ele escolheu
+    #Respondo com ACK que já pode conter dados (Tipo GET)
+
+    #4 Mensagens - Qualquer lado pode fechar conexão
+    #Envia FIN como 1
+    #Cliente envia ACK para esperar um pouco, limpar o Buffer
+    #Cliente envia FIN fechar finalmente
+    #Servidor envia ACK confirmando recebimento
+    #Ainda não fecha instantanemaente, ele fica um tempo de timeout para ver se vai chegar ACKs perdidos da conexão
+        #Esse time coemça quando ele recbee o FIN do cliente (O segundo fin da conexão)
+    
+#Esboço???
+    #Normalmente se considera a internet com banda infinita
+        #mas isso é comparado com um, não com milhares. Em eventos especificos mútiplas pessoas podem tentar acessar a mesma coisa
+    #Normalmente enlaces não são a preucupação nesse caso
+    #Conforme o Roteador vai enchendo e a fila vai ficando maior ela vai criar latência
+        
+    
+    #Tem maneiras de desocbir se está congestionado
+        #Uma técnica seria usar um bit para o roteador avisar se ele estar se congestionando ou não e os hosts diminuirem o fluxo (ngm usa)
+        #Outra é, se for fazer um gráfico, é só latência crescendo em um mesmo computador para outro. O único atraso que pode aumentar é de fila. Mas pode ter muita variação
+        #O melhor é o por eventos, a primeira é conferir o timeout que indica muita coisa, e outra é a repetição de ACK, ou seja, tem muito pacote se perdendando, o que em sí não é tão grave.
+            #Então tem um monitor que observa isso e aumenta ou diminui a taxa de envio conforme necessário.
+            #Isso é feito alterando o tamanho da janela já que a taxa vai ser sempre o tamanho da janela / RTT basicamente
+            #Nova janela de congestionamento, CWIND por exemplo
+
+
+
+#Controle de congestionamento (Questão garantida)
+
+#Normalemnte o a janela aumenta exponencialmente, 2 4 8 , nome disso é partida lenta. O nome é meio anti-intuitivo pois ele atualemnte está lento
+#Prevenção de congestionado é quando ele sobe devagarzinho invés de exponencialmente, já quando ele subiu muito
+#Se der Timeout noramlemnte vai pro mínimo possível, que é 1
+#Se der 3 ACK duplicados ele diminui pela metade a velocidade
+
+
+#Implementação de partida lenta
+    #Ele via dobrando pois ele manda X ack, e aumenta para cada X ack recebido, manda 1, recebe 1 ficando com 2. Manda 2, recebe 2 ficando com 4 e assim.
+    #Se for na prevenção de congestionamento - ??????? Olha no livro, diagrama tá confuso
+
+
+
+
+
+
+
+
