@@ -1,0 +1,58 @@
+#Continuação camada de rede
+    #Era para ter visto vídeo
+
+
+
+#Algumas coisas do protoclo IP, fragmentação, funcionamento geral
+    #Provavelmente cai na Provavelmente
+
+
+#Funçẽos camada de rede 
+    #Protocolos de Roteamento
+        #RIP, OSPF e BGP (BGP mais popular, que junta a internet inteira). Todos são usado em conjunto
+        #Utiliza tabela de repasse
+    
+    #Protocolo IP
+        #Endereçamento, formato de datagrama e outras coisas de gerenciamento
+
+    #Protocolo ICMP
+        #ICMP, auxiliar e muito especifico
+
+
+#Datagrama do IP
+    #Aqui que fica os endereços, por isso a camada de transporte não leva essa informação
+    #Especificações no slide
+    #Tem um tempo de vida, para evitar pacotes "rodando"
+    #Em teoria não era para o roteador olhar camadas inferiores à rede, mas para atravessar  a NAT (que não vi ainda), ele precisa abrir a de transporte para acessar determinados dados
+    #Não tem verificação de integriadade, ele confia na de transporte para fazer isso
+
+
+
+
+#Introdução de fato ao Endereçamento IP
+    #Será ensiando com IPV4 pois é mais facíl vizualisar, mas tudo vale para o IPV6 (Que tem muito mais bits)
+    #IP é 32 Bits
+        #Ele não idenfica UM computador, ele identifica uma interface de rede de algo (UM pc pode ter várias interfaces)
+        #Um roteador tem no minimo 3 interfaces, um para cada enlace
+    #IPV4 já esgotou a quantidade, por isso é usado IPs fakes (Os 192 da vida), a maior parte foi para os roteadores formando a internet.
+    #Subrede na definição é um conjunto de interfaces de redes, com uma parte do endereço em comum até chegar em uma interface do roteador (Isso inclui o proprio IP da interface do roteador)
+
+    #Depois veremos HUB e SWITCH. Isso é diferente de um roteador. A sub-rede acaba SOMENTE quando chega em um roteador
+        #Enlace entre cada roteador também uma subrede, mesmo que não tenha um computador.
+
+    
+#Endereçamento CIDR
+    #Roteamento interdominio (Dominio é come se fosse cada sub-rede)
+    #Antigamente não podia comprar só um IP da rede, ou você comprava um classe C (24 Fixos e 8 variaveis, 256 endereços)
+        #Tinha o classe B ( que era 16 Bits de endereços possíveis e 16 travados, 64 Mil)
+        #E por fim tinha a A (que era 8 fixo e 24 travados, alguns milhões de bits)
+        #Ficava a.b.c.d/x
+        #Inicialmente provavelemtne era  a IKAM que vendia.
+        #Quando essas empresas grandes começaram a vender para empresas menores, começou a ser de bit em bit (Pois a variação era muito grande), e ai ficou sem classes. ou CLASSLESS, por isso o C do CIDR
+
+
+    
+#Exercicio calcular rede
+
+
+
