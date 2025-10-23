@@ -37,5 +37,9 @@
 #Gerenciamento de memoria associativa TLB
     #Feito normalemnte pro Hardware, pois é mais rápido, exemplo do x86
     #Um processo pode ser bloqeuado se der page fault, o proprio SO toma conta, faz a requsição para o HD e bloqeuia
-    #
+
+
+
+
+#
     
