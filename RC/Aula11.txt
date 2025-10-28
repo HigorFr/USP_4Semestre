@@ -30,9 +30,11 @@
 #Cabeçalho TCP (20 Bytes)
     #No minimo 20 Origem
     #No minimo  20 Destino
-    #ACK Numeros grandes, para não dar voltas
-    #Comprimento do Cabeçaho (Pensando no futuro caso seja necessário por informações a mais)
+    #SEQ - Sequencia
 
+    # Reconhecinemtno - ACK Numeros grandes, para não dar voltas
+    #Comprimento do Cabeçaho (Pensando no futuro caso seja necessário por informações a mais)
+    #Flag ACK para saber se é válido
     #Flag Dado urgente
     #Flag PUSH (Joga para camada de aplicação independente da ordem)
     # Flag R, S e F, três flags para Reset para resetar, Sync para sincronizar dado e Final para finalizar conexão
@@ -79,10 +81,16 @@
 #Gerenciamento da conexão TCP
     #Porque isso pra inicio de conversa? Pois se eu reabrir a porta pro mesmo servidor, pode ser que chega ACK de conexão antiga, e bagunça a conexão. Preciso fechar em ordens.
     
+
+
     #3 Vias - para abrir, sempre cliente inicia
-    #Primeiro envia Sync como 1, sem dados, para pedir conexão
-    #O servidor vai mandar um SYNACK, já envia numero de sequencia que ele escolheu
-    #Respondo com ACK que já pode conter dados (Tipo GET)
+    #Primeiro cliente envia Sync como 1, sem dados, para pedir conexão
+    #O servidor vai mandar um SYNACK, já envia numero de sequencia que ele escolheu   (Tem que inviar informações sobre buffer e combinar sequencia)
+    #Cliente Responde com ACK que já pode conter dados (Tipo GET)                               
+
+        #ou seja, demora um RTT para começar a mandar dados
+    
+
 
     #4 Mensagens - Qualquer lado pode fechar conexão
     #Envia FIN como 1
