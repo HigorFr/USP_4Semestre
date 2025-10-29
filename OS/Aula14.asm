@@ -81,3 +81,5 @@
     #Fica girando no working set, no pior caso todas estarão no working set.
     #Mais no slide
 
+
+
