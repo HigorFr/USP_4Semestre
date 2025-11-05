@@ -1,0 +1,41 @@
+#Vetor distancia
+    #A vantagme é não precisar de fazer o broadcasting, que é muito custoso
+    #Dessa forma ele pode ficar rodando a todo momento e descobrir rápido caso algum caia
+
+    #"Nóticias Boas se espalham rápido e noticias ruins lento" - Oposto da vida real
+        #Isso signficia que caso distancias diminuam por exemplo, essa mudança será praticamente instantânea
+        #Contudo se uma conexão cair ou aumentar muito (A ponto de variar a rota), isso pode demorar muito para se propagar
+        #Isso porquê tem o problema da "contagem até o infinito" ele fica aumentando 1 em 1 (O que atrapalha a principal vantagem do vetor distancia)
+            #Tem como evitar isso com o nome "Inversão Envendada"
+
+
+    #Inversão envenenada é uma regra aplicada todos os nós 
+        #É quando um nó em uma ponta mente para um dos nós no meio de um caimnho, enviando o valor Infinito entre o o meio do caminho e o destino.
+            #Ou seja, o X meio que impede que ele mesmo seja usado como caminho para Y, já que X já sabe que o melhor caminho para Z do Y, é indo direto.
+    
+    #Isso será o padrão a partir de agora, tudo por padrão terá reverso envenenado
+
+
+
+#E na internet?
+    #Obiviamente os roteadores não mapeam todos roteadores possíveis, isso seria 2Gb, enviados para redes para seus vizinhos, isso teria que ser processado por cada roteador além de que todo processo se repetiria por iteração
+    #Impossível processar, além de que não se tem a topologia da internet inteira, já que pode haver subredes que não divulgam como está sua propria topologia
+    
+    
+
+
+#Roteamento por Hierarquia
+
+#Imagine sistemas autonomos (AS), uma sub-rede com dono, a internet faz uma hierarquia que mapea toda essa sub-read como se fosse apenas um nó.
+    #Isso já ajuda, mas não resolve.
+    #Como essas subredes ficam agrupadas, os intervalos de IP ficam muito adjacentes, e isso vai ajudar
+    #Tudo isso é chamado de Roteamento por hierarquia.
+
+
+#Certos roteadores podem ser ponte para outros AS, gateways. (Ou seja, dentro do "nó" que a internet enxerga no alto nível, tem um roteador que vai estar na borda, anunciando para quem ele pode enviar, além de enviar o que vai sair do "nó" (SA)    )
+#Contagem de distância normalmente é o número de HOPS: aqui é o numeor de AS que você vai passar para chegar no destino.  
+    #No fim é isso que a Intenret vai contar
+    #Isso pode gerar probleams de cada AS querer jogar o pacote fora o mais rápido possível, e joga para fora o mais rápido. Isso cria o problema de Roteamento de bata-quente.
+        #Normalmente empresas (SA) não fazem isso a não ser que é a ultima opção
+
+#Roteamento hirarquico não consgue garantir melhor caminho, ele tenta chegar perto, mas é impossível mapear tudo. Até porque não se sabe o que acontece dentro dos nós de "SA"
