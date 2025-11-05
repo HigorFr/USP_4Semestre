@@ -39,3 +39,35 @@
         #Normalmente empresas (SA) não fazem isso a não ser que é a ultima opção
 
 #Roteamento hirarquico não consgue garantir melhor caminho, ele tenta chegar perto, mas é impossível mapear tudo. Até porque não se sabe o que acontece dentro dos nós de "SA"
+
+
+
+
+#Protocolos para rotemento na hierarquia
+
+#INTRA-AS
+    #RIP - Vai cair na prova
+        #Antigo, usado principalemnte para roteamento de comandos de terminais para um computador. Não era sequer prensar para internet.
+        #Vetor distancai, no max 25 destinos possíveis
+        #Conta distancia como HOPS
+        #Infinto era 15, pois só tinha 4 bits para guardar essa informação
+        #Manda vetores a cada 30 segundos
+        #Se ficar 180 sem mandar, considera que caiu
+        #Usa envenenamento
+        #Não tinha uma divisão clara de camadas de rede, então ele manda UDP para camada de transporta (era para estar tudo na de redes) que recebe em um processo na aplicação (Que também não era para existir)
+
+    #OSPF - 
+        #Era projeto de código aberto antes de ser padrão criar código aberto
+        #Link state - Estado de enlace
+        #Faz a imundação do broadcasting e registra
+        #Ou seja, usa o dijkstra
+        
+        #Segurança - Usa apenas mensagens autenticadas para impedir intrusão maliciosa
+        #Permite varios tipos de serviço, consegue gerenciar caminhos para situaçãoes diferentes (Realtorios podem ter lag, controle maquinario não pode)
+            #Isso permite direcionar para enlaces diferentes diferentes tipos de pacotes.
+        #Suporta multicast - Será dito na aula que vem (falta ipv6)
+        #Roteamento hierarquico (não para intenret inteira), mas pode fazer dentro de empresas grandes
+            #Cria um "backbone", miolo, uma topologia estrela, onde todos tem que passar pelo centro.
+
+
+    #IGRP - Não sera comentado (É propietário da Cisco, empresa com mais roteador na internet)
