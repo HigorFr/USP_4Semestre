@@ -34,8 +34,8 @@ I or $r8, $r6, $r7
 
 IF  ID  OPR  D1  D2  D3  D4  D5  D6  WB
     IF  ID   OPR OPR OPR OPR OPR OPR OPR? OPR? D1 D2 WB
-        IF   OPR D1  D2  WB
-             IF  ID  OPR D1  WB
+        IF   ID  OPR D1  D2  WB
+             IF  ID  OPR D1  D1?  WB
 
 
 #Aqui travou no OPR, pois ningué, está usando a memoria, mas ela ainda precisa de dados pendentes
@@ -65,8 +65,8 @@ I lw $r8, 120($r6)
 
 IF  ID  OPR  D1  D2  D3  D4  D5  D6  WB
     IF  ID   OPR D1  WB
-        IF  ID  OPR OPR OPR OPR OPR OPR D1  D2  WB
-            IF  ID  OPR OPR OPR OPR OPR OPR OPR OPR OPR D1  D2  WB                       (Essa linha ta errada eu acho)
+        IF  ID   OPR OPR OPR OPR OPR OPR OPR D1  D2  WB
+            IF   ID  ID  OPR D1  D2  D2  D2  D2  WB                       
 
 
 
@@ -83,4 +83,49 @@ IF  ID  OPR  D1  D2  D3  D4  D5  D6  WB
 #Estações de reserva amrazenam comandos (Qi, através de um numero)
 
 #Isso vai funcioanr como uma outra tabela extra 
+
+
+
+
+#Exemplo daqueles exercicios pelo Tomasulo
+
+#Read after Write
+
+
+IF  ID  OPR  D1  D2  D3  D4  D5  D6  WB
+    IF  ID   OPR OPR OPR OPR OPR OPR OPR? OPR? D1 D2 WB
+        IF   ID  OPR D1  D2  WB
+             IF  ID  OPR D1  D1?  WB
+
+
+
+#WAR e WAW  (Onde o scoreboard ia mal)
+
+IF  ID  OPR  D1  D2  D3  D4  D5  D6  WB
+    IF  ID   OPR D1  WB
+        IF  ID   OPR OPR OPR OPR OPR OPR OPR D1  D2  WB
+            IF   ID  ID  OPR D1  D2  D2  D2  D2  WB                       
+
+
+#Como seria se fosse tomazulo?
+
+
+#5 Estações de reserva memoria.
+#3 para soamdor.
+#2 para mutiplicadores.
+
+
+1- Depois de despachar, cai na EStação de reserva RS (Não em OPR)
+2- Quando o ADD encontra o conflito (Logo quando entra em RS), ele guarda uma informação. "Estou esperando "DIV" ($)4 e  "ADD"$8"
+3- Quando o OR terminar o W dele, ele manda na via de dados que terminou o 8, e então a RS vai identificar e vai atualizar que só vai precisar do DIV agora.
+    Ou seja, eu guardo da onde vem a infomação de que eu preciso
+    Ela literalmente guarda o valor de $8 ao fazer isso, sem banco de registradores
+
+
+4- Lw entra na estação de reserva, e então os registradores descobrem que o LW será o ultimo a colocar valor no $8
+
+#Ou seja, ou você já leu depois de ser despachado ou vai ficar olhando para algum registrador. Você não acessa mais o banco.
+#Tem uma tabelinha que vai sendo atualziada para cada registrador que fala "Da onde vai vir tal cois"
+
+
 

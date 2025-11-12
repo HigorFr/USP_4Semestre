@@ -39,7 +39,7 @@
 
 #TIpos de poltiicas
     #intra - adm define tudo
-    #inter - ????]
+    #inter - ????
 
 
 
