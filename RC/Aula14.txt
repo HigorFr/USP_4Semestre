@@ -1,0 +1,78 @@
+#Divisão de subredes
+#Basicamente relizado por continentes, países, fornecedores, organizaçõ etc...
+#Dessa forma não é necessario saber todos os ips do mundo, apenas uma parte inicial e conforme chega mais perto, esses numeros vão ficando mais esepcificos até chegar no host de destino
+
+    #Da para ter mais de um range especifico de IPs que são seus
+    #Cada empresa pode anuncair para internet (através do BGP) todos os endereços que ele alcança
+    #Inclusive tem o exemplo no slide de compra de IPs, que ai pelo fato de um range menor ser mais específico, ele tem prioridade.
+
+
+#De onde veio todos os IPs?
+    #ICANN
+        #Administra DNS
+
+
+#Como equipamentos conseguem IP?
+    #DHCP
+    #Esse protocolo roda na camada de aplicação na verdae, a todo momento ele está jogando um Discover.
+    #Roteadores ouvem isso e respondem (Ou não, se forem desativos), com um Offer com todas as informações para conexões
+        #No caso de desativados, você já precisa por as informações no dispositivo
+        #Celulares enviar varias dessas.
+    #Depois celular escolhe (Normalmente a mais) e manda um Request
+    #O roteador por fim manda um ACK confirmando
+    #Isso fica resetando a cada um tempo (O admin que define o tempo)
+
+
+#Enquanto você não esta conectado, você não tem IP, então você manda por broadcast, 255.255.255.255, (tudo 1) e também recbee por broadcast
+    #Ou seja, todo mundo da subrede vai ouvir isso, mas claro que só quem tem o servidor DHCP aberto vai ouvir.
+    #(Isso pode até ser uma vulnerabilidade, inclusive as pessoas da rede pública vão ver o seu IP local)
+
+
+
+
+
+#Algoritimos de Roteamento
+    #Dois tipo, o Global quando se conhece toda rede (Obviamente não é a que internet usa, é mais interno)
+    #Outra é apenas para um mapa especifico
+
+    #Pode ser Dinamico ou Estático
+        #Dinamico, os melhores caminhos mudam através de um algortimo automaticaemnte
+        #Estatico tem que ser reconfigurado.
+
+
+#Dijkstra
+    #Todos Roteadores enviam um broadcast para atualizar o roteamentom, dessa forma todos tem um mapa.
+        #Ele não irá rodar toda hora.
+        #Broadcast strom, é quando isso acontece e todo roteador fica enviando para pacote entre sí, em loop, eles só morrem quando aquele valor do cabeçalho do IP zera e o roteador mata o pacote. Isso é custoso pra rede.
+
+        #Vetor distância vai ser através dos vizinhos, então não terá esse problema.
+
+    #Todos os roteadores tem um mapa especifico de cor, e então cada um calcula a sua árvore de custo mínimo, que será basciamente as únicas saída que ele irá utilizar.
+
+    #Computadores calculam isso até que bem rápido
+
+    #Depois que a árvore está pronta, é muito útil, os bradcasts ficam mais eficientes a partir daí e fica uma tabela.
+
+
+#OBS, na vida real o peso das arestas normalmente é 1, e acaba só conferindo o número de "HOPS" (pulos), pois a distacia dos elances é realtivamente igual, contudo você pode configurar pesos para realziar funções especificar e definir fluxos melhores.
+    #Ex, posso ter um satelite fazendo um caminho emergêncial mais caro, e para não usar cotidianamente toda hora eu coloco um peso alto.
+    #Ou eu posso colocar peso em dados especificos, fazendo com que aplicações utilizem caminhos específicos.
+
+
+#Exercício -> PESQUISAR OSCILAÇÕES
+    #Oscilações são basicamente uma instabildiade causada porquê rotas entre roteadores estão sendo alteradas rapidamente, fazendo com que a tabela intenra no roteador não represente a realidade por curtos períodos de tempo. Isso acontece por vários motivos, como desincronização do mapa, ou broadcasts storms em seuquência. Isso pode prejudicar a fila do roteador, criando congestionamento e piorando a qualidade da rede em geral.
+
+
+#Bellman-formando
+    #Aqui é o Vetor vizinho.
+    #Aqui se parte da filosofia que a distancia para um nó qualquer, será o minimo dentre todas as (distancias meu até vizinhos + distancia do vizinho até o nó.)
+    #Isso vai se atualizando e melhorando.
+    #Também parte do pressuposto que ele sabe a distancia de seus vizinhos diretos.
+
+
+
+
+
+
+
+

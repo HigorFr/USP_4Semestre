@@ -1,0 +1,75 @@
+#Ultima aula de redes
+#BGP
+
+#BGP é o protocolo hierarquico de fato usado na internet
+    #Procolo para roteador de borda (Aquele que junta as AS)
+    #Não é tão oficial assim, mas é o mais cumprido, pois é quase um padrão de fato agora. A internet não funciona sem ele.
+    #Ele vai usar um algortimo parecido com vetor distancia para realizar o caminho da internet
+    #A internet só sabe que você existe através do BGP
+
+
+#Divido em eBGP (Externeo) e IBGP (Interno)
+    #EBGP é quem comunica entre as duas AS, eles comunicam em quem cada um chega
+    #IBGP é dentro da AS
+
+
+#Anuncio é um "Contrato", se você anunciou que vocẽ envia, você tem que enviar.
+    #Não é nenhuma regra, ou lei, mas todo mundo obedece.
+
+#BGP chama de rota os prefixo + outros atributos, prefixo é intervalo de IPs e atributos são diversas informações com relação ao destino
+    #AS-PATH, todas as AS que você vai passar para chegar lá (Ou seja, o custo, que é o total de HOPS)
+        #Com isso, já que você sabe o caminho completo, não é necessário fazer inverso envenenado e impede contagens até o infinito
+    #NEXT-HOP é 
+
+#Dá para um roteador não aceitar um destino possível, ou seja, ela já avisa que ela não irá querer utilziar um caminho. Isso por motivos políticos
+    
+#Logo a ordem é 
+    #Motivos Políticos
+    #Caminho com menor numero de AS
+    #Batata quente
+
+#TIpso de mensagens:
+    #Não anotei
+
+
+
+#Existe Dual-homed, que é quando se coloca 2 provedores para garantir redundância, ou seja, coloca 2 AS conectados diretamente a sub-rede de um possível cliente.
+    #Desse modo X nunca anuncia para o A que ele alcança B, nem anuncia para B que ele alcança o A
+    #ou seja, se A sabe que B pode mandar para o mesmo lugar que ele, não tem porque A fala para B que também chega no mesmo caminho.
+
+#TIpos de poltiicas
+    #intra - adm define tudo
+    #inter - ????
+
+
+
+
+#Broadcasting
+    #Normalmente, se deixa o processamento pesado nos hosts, para os hosts serem simples
+    #Broadcast é uma ideai que o roteador duplica um pacote e envia para pessoas diferentes.
+        #Isso dá a entender que o processamento está ficando por parte do roteador, mas na verdade isso reduz, pois todos os pacotes teriam que lidar com isso de qualquer jeito.
+    
+    #Ou seja, duplicação da fonte é mais ineficaz ainda, fora que vocẽ terá que saber os endereços o qual está enviando.
+
+
+#Melhores maneiras
+    #Fazer por inundação é uma das maneiras mais fáceis, mas o pacote fica circulando até o pacote morrer (atingir o máximo de hops). Isso desperdiça processamento. Mas é o que tem caso você não tenha mais informação. (Broadcast storm)
+    
+    #Indundação controlada 1
+    #Tem como resolver parte disso dando um pouco mais de trabalho para o roteador, coloca-se um id do pacote e caso ele receba novamente ele mata o pacote. Tem um custo de memoria e processamento. Contudo ainda tem problema.
+
+    #Indundação controlada 2
+    #Considerando uma rede que todos saibam o caminhos: Além colocar a solução anterior, é possível observar a origem e saber se o pacote veio do menor caminho possível, se for, signicia que o pacote não deu voltas (Pergunta de provinha)
+
+    #Uma spanning tree de um nó é escolhida para ser a padrão, um centro, (ela não é unica), e ai todos os nós enviam aos que só eles conseguem enviar, e fazem um caminho até um nó central para então divi-Logo
+
+#Multicasting
+    #Intermediario entre broadcast e unicast.
+    #Imagina um streaming, se fosse um unicast padrão eu teria que enviar um pacote para cada pessoa (tipo 50). O que é impossível para uma pessoa devido a banda
+        #Atualmente nós enviamos para um servidor forte e ele que consegue repassar.
+    #Broadcast seria impossível, pois é a internet inteira e você não precisa enviar para todo mundo, só para os que você quer
+
+    #Multicast então cria um IP para um grupo de IPs (Grupo de broadcast), e os roteadores direcionam e duplicam o pacote para todos os caminhos que ele chega. Então é quase um broadcast de sub-rede, só que com a distância da internet. Para isso ele faz uma spanning tree de todo mundo no grupo e consegue ir duplicando por ai.
+
+
+    #

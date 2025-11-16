@@ -1,0 +1,2 @@
+PESQUISAR OSCILAÇÕES
+Oscilações são basicamente uma instabildiade causada porquê rotas entre roteadores estão sendo alteradas rapidamente, fazendo com que a tabela intenra no roteador não represente a realidade por curtos períodos de tempo. Isso acontece por vários motivos, como desincronização do mapa, ou broadcasts storms em seuquência. Isso pode prejudicar a fila do roteador, criando congestionamento e piorando a qualidade da rede em geral.

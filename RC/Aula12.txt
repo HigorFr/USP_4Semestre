@@ -1,0 +1,97 @@
+#Camada de redes
+
+#Gerenciar IPs, o porque do NAT, tudo mais.
+
+#Aqui tem o algortimo de encontrar caminhos
+    #Será usado o de djaskra, mesmo de grafos
+
+
+
+
+#Funções (Roteador)
+
+    #Roteamento
+        #É como direcionar em qual caminho o pacote ir em um cruzamento.
+        #No minimo 3 caminhos (Se não seria só um cabo)
+            #Noramlmente tem mais que três, em redes grandes pode ter até 100 interfaces
+        #Cada saída exige uma placa de rede, e com IP pŕoprio (IP real)
+        
+
+        
+    #Repasse
+        #Entrada do roteador para a saída dele.
+        #Ou seja, ocorre dentro do roteador.
+    
+
+
+#Na rede que se define se vai ser comutação por circuito ou por pacote, pois os roteadores são diferentes e protocolos diferentes
+    #Mais de 90% das redes é por pacote.
+
+#O que rede pode garantir
+#Pacote ????:
+    #Entrega garantida
+    #Entrega garantida com atraso limitado
+
+#Circuito:
+    #Entrega na ordem
+    #Largura de badna minima
+    #Restrições no espaçamento entre pacotes
+
+
+
+#Circuito é mais dificil configurar e o equipamento é mais caro, pois ele tem várias responsabilidades.
+
+
+#Tabela de Repasse
+    #Mais fácil olhas em binário
+    #IPV4 - 4 números, nenhum pode ser mais 255
+    #Se define um intervalo de endereços para uma saída de interface de enlace.
+    #A divisão é feita de grandes intervalos para menores. Então (Há 4 bilhões no total de ipv4)
+        #Você semrpe compra intervalos de IPs de alguem com intervalo maior, e assim por diante.
+        #Os primeiro "Bilhão" é como se fosse de da ásia, depois você escolhe um ip que leva ao jápão, depois a cidade etc... em uma ordem dos IPs
+        #Por isso dá para identificar mais ou menos sua localização pelo IP
+    
+    #Endereço da subrede é a parte fixa, e indica o que vai variar dentro da sub-rede.
+        #Isso evita repetição
+        #Notação é tipo XXX.XXX.XXX.XXX/21, significa que os primeiros 21 bits são para "Máscara"
+        #Tem a notação usando o 255.255.255.0, que signicia que os primeiro  2⁸ ,segundo  2⁸ e terceiro 2⁸ fazem parte da máscara.
+        #As vezes é dividio por setor, andares, laborátorios etc...
+
+
+    #Priodade do IP é sempre para o mais especifico, então se chegar um 000001, em uma rede com range 000 e outra com 0000001, o prefixo maior sempre maior.
+
+
+#Diferença de Internet e ATM (Telefone)
+
+#Sistema inteligente e rede burra   x   Sistema burro e rede inteligente
+#Mais coisa no slide
+
+
+
+
+
+#Diagrama mostrando roteador
+    #Lembrando que não existe entrada e saída separados, são sempre em conjunto na placa de rede, só tá assim para facilitar o diagrama.
+    #Não há só um buffer no rotedoar, para cada placa de rede tem um.
+    #Pacotes que já chegaram no roteador sempre vão conseguir sair, os pacotes quando são perdidos é porquê o roteador recusou entrada dele.
+    #Mas ai a fila de saída vai afetando a entrada.
+    
+#Elemento de comutação é o que leva da entrada para saída.
+    #Colocar memória ou barramento nesse circuito ia ser meio lento, mas o melhor seria ligar todos.
+
+
+    #Comutação por memória:
+        #Guarada e a saída pega
+
+    #Barramento:
+        #Bararmento disponível para todos
+
+    #COmutação por uma rede de interconexão (O "Ligar trodos")
+        #60 GBtis/S
+
+
+
+#Tamanho do buffer no roteador tem calculo especifico que faz sentido, usando teoria de filas da maemtática.
+    RTT * C / Raiz(N)
+    #Teoria não será aprofundada e não precisa decorar para provas
+
