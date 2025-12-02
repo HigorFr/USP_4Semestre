@@ -94,11 +94,28 @@
     #Não está na 2FN pois existem dependencias parciais de IDAluno, uma com nomreAulo e outra com endereço.
     #Para resolver, criar uma tabela com IDAluno, idDisciplina, semestre, ano e nota. E outra tabela com endereço e nome e IDaluno
 
-#2- #F1: Areaconhecimento, Ano -> nomePremiado
-    #F2: nomePremiado -> nacionalidade
+#2- #F1: Areaconhecimento, Ano -> nomePremiado e Nacionalide
+    #F2: nomePremiado -> nacionalidade 
+    
     
     #Não está na 3FN, pois existe uma dependencia transitiva entre nomePremiado e nacionalidade.
     #Para resolver, criar uma tabela com Areaconhecimento, Ano e nomePremiado. E otura com nomePremiado e nacionalidade.
+
+#Conceito de dependencia funcional é que as tuplas sempre terão os mesmos valores correspondentes, ou seja, se existe A com B em um lugar, B sempre acompanhárá A em outras tuplas também.
+
+
+#Falar anomalias
+
+
+
+#3- Exercício no ediciplinas
+#a
+#B
+#c
+#d
+#e
+
+
 
 
 

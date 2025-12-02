@@ -1,0 +1,102 @@
+function [A,B]=mlp(X,Yd,h,nepmax)
+[N,ne]=size(X);
+[N,ns]=size(Yd);
+% Acionar a coluna de 1
+X=[X,ones(N,1)];
+%Gerar as matrizes de Pesos
+A = rands(h,ne+1);
+B = rands(ns,h+1);
+% Calcular a saida da rede
+Y=calc_saida(X,Yd,A,B,N);
+erro = Y-Yd;
+EQM = 1/N*sum(sum(erro.*erro));
+nep = 0;
+alfa = 0.4;
+vetEQM=[];
+vetEQM =[vetEQM;EQM];
+alfa=0.01
+while EQM>1e-5 & nep<nepmax
+     nep=nep+1;
+    % Calcula o gradiente
+     [dJdA,dJdB]= calc_grad(X,Yd,A,B,N);
+     % Calcula o alfa
+     alfa=calc_alfa(X,Yd,A,B,-dJdA,-dJdB,N);
+     %Atualiza os parametros
+     A = A - alfa*dJdA;
+     B = B - alfa*dJdB;
+     %Calcular a saida da rede
+     Y=calc_saida(X,Yd,A,B,N);
+     %Calcula o erro
+     erro = Y-Yd;
+     %Calcula o EQM
+     EQM = 1/N*sum(sum(erro.*erro))
+     vetEQM =[vetEQM;EQM];
+end
+plot(0:nep,vetEQM)
+end
+
+function [dJdA,dJdB]= calc_grad(X,Yd,A,B,N)
+Zin = X*A';
+Z = 1./(1+exp(-Zin)); %(1 -f)*f 
+Yin = [Z,ones(N,1)]*B';
+%Y = 1./(1+exp(-Yin)); % (1-g)*g
+Y= Yin;
+erro = (Y-Yd);
+%dJdB = 1/N*(erro.*((1-Y).*Y))'*[Z,ones(N,1)];
+dJdB = 1/N*(erro)'*[Z,ones(N,1)];
+%dJdZ = (erro.*((1-Y).*Y))*B(:,1:end-1);
+dJdZ = (erro)*B(:,1:end-1);
+dJdA = 1/N*(dJdZ.*((1-Z).*Z))'*X;
+end
+
+function Y=calc_saida(X,Yd,A,B,N)
+Zin = X*A';
+Z = 1./(1+exp(-Zin));
+Yin = [Z,ones(N,1)]*B';
+%Y = 1./(1+exp(-Yin));
+Y= Yin;
+end
+
+function alfa =calc_alfa(X,Yd,A,B,dirA,dirB,N)
+epsilon = 1e-3;
+hlmin = 1e-3;
+alfa_l = 0;
+alfa_u = rand();
+An = A + alfa_u*dirA
+Bn = B + alfa_u*dirB;
+[dJdA,dJdB]= calc_grad(X,Yd,An,Bn,N);
+g = [dJdA(:);dJdB(:)];
+dir = [dirA(:);dirB(:)];
+hl = g'*dir;
+while hl<0
+    alfa_l = alfa_u;
+    alfa_u = 2*alfa_u;
+    An = A + alfa_u*dirA
+    Bn = B + alfa_u*dirB;
+    [dJdA,dJdB]= calc_grad(X,Yd,An,Bn,N);
+    g = [dJdA(:);dJdB(:)];
+    dir = [dirA(:);dirB(:)];
+    hl = g'*dir;
+end
+alfa_m = (alfa_l+alfa_u)/2;
+itmax = ceil(log ((alfa_u-alfa_l)/epsilon));
+it = 0;
+while abs(hl)>hlmin & it<itmax
+    it = it + 1;
+    An = A + alfa_m*dirA
+    Bn = B + alfa_m*dirB;
+    [dJdA,dJdB]= calc_grad(X,Yd,An,Bn,N);
+    g = [dJdA(:);dJdB(:)];
+    dir = [dirA(:);dirB(:)];
+    hl = g'*dir;
+    if hl>0
+        alfa_u = alfa_m;
+    elseif hl<0
+        alfa_l = alfa_m;
+    else
+        break;
+    end
+    alfa_m = (alfa_l+alfa_u)/2;   
+end
+alfa = alfa_m;
+end
