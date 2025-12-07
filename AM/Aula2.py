@@ -198,11 +198,13 @@
         #Modelos ruins, sem haver com o dominio, ficam com o g muito distante
         #Isso é erro de representação 
 
+    #Erro de arpoximação é que o espeaço de hipótese não contém a função verdadeira (definido na arquitetura)
+
     #Erro de estmiação, conjunto de pontos pequenos, falta de dados
 
     #Erro de computação, que é devido a otimização, é impossível achar o ótimo global.
 
-    #Erro ê é formado pela soma dos 3 erros
+    #Erro chamado de generalização é formado pela soma dos 3 erros
 
 
 
